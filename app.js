@@ -7,9 +7,9 @@ let processes = [];
 async function loadAllData(){
 
 const files = [
-  "./Data/lh.json",
-  "./Data/gram.json",
-  "./Data/rodamax.json"
+  "./data/lh.json",
+  "./data/gram.json",
+  "./data/rodamax.json"
 ];
 
   processes = [];
