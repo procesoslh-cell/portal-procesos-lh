@@ -6888,21 +6888,6 @@
         "path": "Gestión de venta",
         "procesos": [
           {
-            "id": "lh-comercial-gestion-venta",
-            "nombre": "Carpeta Gestión de venta",
-            "sistema": "CRM / Odoo / Ventas",
-            "bi": "Ventas → Indicadores Comerciales",
-            "original": "https://lopezhnossa.sharepoint.com/sites/ALLPROCESOS/Documentos%20compartidos/BANCO%20DE%20PROCESOS%20AS%20IS/Procesos%20LH/6-%20Comercial/Gesti%C3%B3n%20de%20venta",
-            "interactivo": true,
-            "tipo": "workflow",
-            "kpis": [
-              "Ventas realizadas",
-              "Pedidos pendientes",
-              "Conversión comercial",
-              "Facturación"
-            ],
-            "pasos": [
-              {
   "id": "lh-comercial-ventas-preventa-entrega-diferida-dropshipping",
   "nombre": "Preventa con Entrega Diferida y Dropshipping",
   "sistema": "Odoo / Compras / Facturación / Logística / Posventa",
@@ -7236,7 +7221,1668 @@
       "responsable": "Facturación"
     }
   ]
-}{
+},{
+  "id": "lh-bici-consignacion-procedimiento-consignacion-bici-bmc-volta",
+  "nombre": "Procedimiento de Consignación Bici",
+  "sistema": "ERP / Odoo / SharePoint / Correo electrónico",
+  "bi": "Sin tablero BI asociado",
+  "original": "https://lopezhnossa.sharepoint.com/:w:/s/ALLPROCESOS/IQBas5bS6b3DSLtn3XO8GPg1AcXATJluiVXHOnjI_Zcl8e4?e=jZrsLd",
+  "interactivo": true,
+  "tipo": "workflow",
+  "objetivo": "Regular la modalidad de consignación para optimizar la gestión del inventario, garantizar la trazabilidad de la mercadería y favorecer la captación de clientes B2B en mercados estratégicos.",
+  "responsables": [
+    "Asesor Comercial",
+    "Supervisor Comercial",
+    "Gerente Comercial",
+    "Jefe de Ventas",
+    "Analista de Cuentas Corrientes",
+    "Jefe de Auditoría",
+    "Jefe de Logística",
+    "Gerente de Administración y Finanzas",
+    "Coordinador de Recepción",
+    "Posventa"
+  ],
+  "entradas": [
+    "Solicitud de consignación",
+    "Perfil comercial del cliente",
+    "Veraz del cliente",
+    "Situación BCRA",
+    "Antigüedad del cliente en LH",
+    "Disponibilidad de stock",
+    "Contrato de consignación",
+    "Razón social y CUIT",
+    "SKU y unidades solicitadas",
+    "Dirección de entrega o exhibición"
+  ],
+  "salidas": [
+    "Consignación aprobada o rechazada",
+    "Contrato firmado y archivado",
+    "Cliente y consignatario dado de alta",
+    "Mercadería enviada al punto de exhibición",
+    "Pedido de venta generado",
+    "Factura emitida al consignatario",
+    "Mercadería retornada si corresponde"
+  ],
+  "kpis": [
+    "Plazo máximo de consignación de 3 meses",
+    "Máximo 4 unidades BMC por consignación salvo autorización de Gerencia",
+    "Máximo 3 consignaciones por año al mismo cliente salvo autorización de Gerencia",
+    "Clientes con Veraz superior a 650 puntos",
+    "Clientes sin deuda en LH",
+    "Clientes con situación normal en BCRA",
+    "Contratos cargados en SharePoint",
+    "Mercadería auditada durante la vigencia del contrato"
+  ],
+  "pasos": [
+    {
+      "titulo": "Analizar perfil del cliente para consignación",
+      "responsable": "Supervisor Comercial",
+      "texto": "El supervisor analiza si el cliente cumple el perfil requerido para acceder a la modalidad de consignación, considerando antigüedad mínima de 6 meses, ausencia de deuda, Veraz superior a 650 puntos, situación normal en BCRA y perfil comercial adecuado.",
+      "controles": "Validar antigüedad, deuda, Veraz, situación BCRA, ubicación estratégica, perfil Store Boutique, referencias y segmento de consumidor.",
+      "clave": "Perfil comercial apto para consignación.",
+      "documentos": [
+        "Informe del cliente",
+        "Veraz",
+        "Situación BCRA",
+        "Fotos o videos del local"
+      ],
+      "riesgos": [
+        "Presentar clientes sin perfil adecuado",
+        "No validar deuda o situación crediticia",
+        "Aprobar clientes sin potencial estratégico"
+      ],
+      "sistemas": [
+        "ERP",
+        "Correo electrónico",
+        "BCRA",
+        "Veraz"
+      ],
+      "salidas": [
+        "Cliente analizado para consignación"
+      ]
+    },
+    {
+      "titulo": "Solicitar aprobación de Gerencia Comercial",
+      "responsable": "Supervisor Comercial / Gerente Comercial",
+      "texto": "El supervisor prepara toda la información y la envía por correo a Gerencia Comercial con el asunto 'CONSIGNACION BMC (NOMBRE DEL CLIENTE)'. El Gerente Comercial define la aprobación final.",
+      "controles": "El supervisor no puede aprobar la herramienta comercial sin autorización previa del Gerente Comercial.",
+      "clave": "Aprobación final de Gerencia Comercial.",
+      "documentos": [
+        "Mail de solicitud de consignación",
+        "Información comercial del cliente",
+        "Fotos o videos del local"
+      ],
+      "riesgos": [
+        "Avanzar sin aprobación gerencial",
+        "Enviar información incompleta",
+        "Utilizar consignación fuera de criterio"
+      ],
+      "sistemas": [
+        "Correo electrónico"
+      ],
+      "salidas": [
+        "Consignación aprobada o rechazada"
+      ]
+    },
+    {
+      "titulo": "Controlar límites de consignación",
+      "responsable": "Supervisor Comercial / Gerente Comercial",
+      "texto": "Antes de avanzar, se verifica que la consignación no supere los límites establecidos: hasta 4 unidades BMC por consignación y hasta 3 consignaciones anuales por cliente, salvo autorización de Gerencia.",
+      "controles": "Validar cantidad de unidades, historial de consignaciones y excepciones aprobadas.",
+      "clave": "Límites de consignación cumplidos.",
+      "documentos": [
+        "Historial de consignaciones",
+        "Autorización de Gerencia si corresponde"
+      ],
+      "riesgos": [
+        "Superar límites sin autorización",
+        "Concentrar stock en un mismo cliente",
+        "Falta de control anual por cliente"
+      ],
+      "sistemas": [
+        "ERP",
+        "Correo electrónico"
+      ],
+      "salidas": [
+        "Límites validados para continuar"
+      ]
+    },
+    {
+      "titulo": "Gestionar firma del contrato",
+      "responsable": "Supervisor Comercial / Cliente / Gerente de Administración y Finanzas",
+      "texto": "Una vez autorizada la consignación, el supervisor envía el contrato para que el cliente lo firme ante escribano público o digital. Si el cliente está fuera de Chaco, debe pasar por el colegio de escribanos de su provincia. Luego firma el Gerente de Administración y Finanzas.",
+      "controles": "Validar firma del cliente, certificación correspondiente y firma interna final.",
+      "clave": "Contrato firmado correctamente.",
+      "documentos": [
+        "Contrato de Consignación"
+      ],
+      "riesgos": [
+        "Contrato sin certificación válida",
+        "Contrato sin firma interna",
+        "Demora en formalización de consignación"
+      ],
+      "sistemas": [
+        "Correo electrónico",
+        "SharePoint"
+      ],
+      "salidas": [
+        "Contrato firmado por cliente y empresa"
+      ]
+    },
+    {
+      "titulo": "Verificar alta del cliente",
+      "responsable": "Asesor Comercial / Analista de Cuentas Corrientes",
+      "texto": "El asesor comercial corrobora que el cliente esté dado de alta como contacto en el módulo Contactos del ERP. Si no lo está, solicita a Cuentas Corrientes el alta correspondiente.",
+      "controles": "Diferenciar el alta de contacto del alta como consignatario, ya que son procesos separados.",
+      "clave": "Cliente dado de alta como contacto.",
+      "documentos": [
+        "Alta de cliente",
+        "Documentación del cliente"
+      ],
+      "riesgos": [
+        "Confundir alta de contacto con alta de consignatario",
+        "Operar con cliente no dado de alta",
+        "Demoras administrativas"
+      ],
+      "sistemas": [
+        "ERP",
+        "Odoo"
+      ],
+      "salidas": [
+        "Cliente disponible como contacto en sistema"
+      ]
+    },
+    {
+      "titulo": "Verificar stock y productos sustitutos",
+      "responsable": "Asesor Comercial",
+      "texto": "El asesor comercial verifica la disponibilidad de stock de la mercadería pactada y define con el consignatario los productos sustitutos en caso de ser necesario.",
+      "controles": "Validar disponibilidad real de stock y dejar acordadas sustituciones posibles.",
+      "clave": "Stock validado.",
+      "documentos": [
+        "Contrato de Consignación",
+        "Detalle de productos pactados"
+      ],
+      "riesgos": [
+        "Comprometer stock inexistente",
+        "No definir sustitutos",
+        "Demorar el envío de mercadería"
+      ],
+      "sistemas": [
+        "ERP"
+      ],
+      "salidas": [
+        "Mercadería y sustitutos definidos"
+      ]
+    },
+    {
+      "titulo": "Archivar contrato digital y físico",
+      "responsable": "Asesor Comercial / Jefe de Auditoría",
+      "texto": "El asesor carga el contrato digitalizado en SharePoint, carpeta 'Contratos Bici', ubicada en Documentos > General > Contratos Consignación. Además entrega el contrato físico al Jefe de Auditoría para custodia y archivo.",
+      "controles": "Validar carga digital, entrega física y acceso a la carpeta correspondiente.",
+      "clave": "Contrato archivado digital y físicamente.",
+      "documentos": [
+        "Contrato digitalizado",
+        "Contrato físico"
+      ],
+      "riesgos": [
+        "No cargar contrato en SharePoint",
+        "Pérdida del contrato físico",
+        "Falta de acceso a documentación"
+      ],
+      "sistemas": [
+        "SharePoint",
+        "Correo electrónico"
+      ],
+      "salidas": [
+        "Contrato disponible para consulta y auditoría"
+      ]
+    },
+    {
+      "titulo": "Solicitar alta de consignatario",
+      "responsable": "Asesor Comercial / Jefe de Administración",
+      "texto": "El asesor comercial gestiona la solicitud de consignación enviando un mail formal al Jefe de Administración con razón social, CUIT, SKU, unidades solicitadas y dirección de entrega o exhibición.",
+      "controles": "Asegurar que la información esté correcta, vigente y completa.",
+      "clave": "Datos completos del consignatario.",
+      "documentos": [
+        "Mail formal de alta de consignatario",
+        "Razón social",
+        "CUIT",
+        "Detalle de SKU y unidades",
+        "Dirección de entrega"
+      ],
+      "riesgos": [
+        "Alta incompleta",
+        "Datos fiscales incorrectos",
+        "Dirección de exhibición errónea"
+      ],
+      "sistemas": [
+        "Correo electrónico",
+        "ERP"
+      ],
+      "salidas": [
+        "Solicitud de alta de consignatario enviada"
+      ]
+    },
+    {
+      "titulo": "Crear ubicación de consignación",
+      "responsable": "Jefe de Auditoría",
+      "texto": "El Jefe de Auditoría crea la ubicación asignada al consignatario en el almacén 'Consignación' y realiza el movimiento de mercadería desde el almacén principal hacia esa ubicación.",
+      "controles": "Validar que la ubicación esté identificada con el consignatario y que el movimiento de stock sea correcto.",
+      "clave": "Ubicación de consignación creada.",
+      "documentos": [
+        "Movimiento de stock",
+        "Detalle de mercadería consignada"
+      ],
+      "riesgos": [
+        "Mercadería sin trazabilidad",
+        "Movimiento a ubicación incorrecta",
+        "Error en stock disponible"
+      ],
+      "sistemas": [
+        "ERP"
+      ],
+      "salidas": [
+        "Mercadería ubicada en almacén Consignación"
+      ]
+    },
+    {
+      "titulo": "Enviar mercadería al consignatario",
+      "responsable": "Jefe de Auditoría / Jefe de Logística",
+      "texto": "El Jefe de Auditoría solicita al Jefe de Logística el envío de la mercadería con el remito generado por el ERP hacia el punto de exhibición.",
+      "controles": "Archivar el remito confirmado para control de auditoría.",
+      "clave": "Remito confirmado.",
+      "documentos": [
+        "Remito generado por ERP",
+        "Remito confirmado"
+      ],
+      "riesgos": [
+        "Enviar sin remito",
+        "No archivar comprobante de entrega",
+        "Pérdida de trazabilidad logística"
+      ],
+      "sistemas": [
+        "ERP",
+        "Logística"
+      ],
+      "salidas": [
+        "Mercadería enviada al punto de exhibición"
+      ]
+    },
+    {
+      "titulo": "Generar pedido de venta al concretarse la venta",
+      "responsable": "Asesor Comercial",
+      "texto": "Cuando se concreta la venta, el asesor genera el pedido de venta al consignatario, seleccionando el almacén 'Consignación' para asegurar el consumo del stock correspondiente.",
+      "controles": "Confirmar que el pedido consuma stock del almacén Consignación y no del almacén central, salvo que el artículo se envíe desde la empresa.",
+      "clave": "Pedido generado desde almacén correcto.",
+      "documentos": [
+        "Pedido de venta"
+      ],
+      "riesgos": [
+        "Consumir stock de almacén incorrecto",
+        "No asociar venta a consignatario",
+        "Errores de trazabilidad"
+      ],
+      "sistemas": [
+        "ERP"
+      ],
+      "salidas": [
+        "Pedido de venta generado"
+      ]
+    },
+    {
+      "titulo": "Confirmar pedido y comunicar facturación",
+      "responsable": "Jefe de Auditoría / Analista de Cuentas Corrientes / Asesor Comercial",
+      "texto": "El Jefe de Auditoría confirma el pedido creado por el asesor seleccionando la ubicación identificada con el nombre del consignatario y comunica por correo al Analista de Cuentas Corrientes y al Asesor Comercial.",
+      "controles": "Validar ubicación correcta antes de confirmar el pedido.",
+      "clave": "Pedido confirmado desde ubicación del consignatario.",
+      "documentos": [
+        "Pedido confirmado",
+        "Correo de comunicación"
+      ],
+      "riesgos": [
+        "Confirmar desde ubicación incorrecta",
+        "No comunicar a Cuentas Corrientes",
+        "Demorar facturación"
+      ],
+      "sistemas": [
+        "ERP",
+        "Correo electrónico"
+      ],
+      "salidas": [
+        "Pedido confirmado y comunicado"
+      ]
+    },
+    {
+      "titulo": "Facturar al consignatario",
+      "responsable": "Analista de Cuentas Corrientes",
+      "texto": "Luego de la confirmación del pedido, Cuentas Corrientes factura al consignatario con la lista de precios aprobada por Jefe de Ventas y Gerencia General.",
+      "controles": "Validar lista de precios aprobada y pedido confirmado.",
+      "clave": "Factura emitida con lista aprobada.",
+      "documentos": [
+        "Factura",
+        "Lista de precios aprobada"
+      ],
+      "riesgos": [
+        "Facturar con precio incorrecto",
+        "Facturar sin pedido confirmado",
+        "No respetar lista aprobada"
+      ],
+      "sistemas": [
+        "ERP",
+        "Facturación"
+      ],
+      "salidas": [
+        "Factura emitida al consignatario"
+      ]
+    },
+    {
+      "titulo": "Controlar plazo de consignación",
+      "responsable": "Asesor Comercial",
+      "texto": "El asesor comercial controla los plazos de finalización de los 3 meses de consignación y gestiona la continuidad, renovación o rescate de mercadería según corresponda.",
+      "controles": "Controlar vencimiento trimestral y renovaciones automáticas salvo decisión contraria de LH.",
+      "clave": "Vencimiento de consignación controlado.",
+      "documentos": [
+        "Contrato de Consignación",
+        "Registro de fechas de consignación"
+      ],
+      "riesgos": [
+        "Exceder plazo sin control",
+        "No rescatar mercadería a tiempo",
+        "Renovar sin revisión comercial"
+      ],
+      "sistemas": [
+        "ERP",
+        "Correo electrónico"
+      ],
+      "salidas": [
+        "Consignación controlada por plazo"
+      ]
+    },
+    {
+      "titulo": "Auditar mercadería consignada",
+      "responsable": "Jefe de Ventas / Asesor Comercial",
+      "texto": "La mercadería consignada debe ser auditada y controlada periódicamente por el Jefe de Ventas y el vendedor asignado durante el plazo contractual.",
+      "controles": "Verificar estado de la mercadería y cumplimiento de condiciones acordadas.",
+      "clave": "Control periódico de mercadería.",
+      "documentos": [
+        "Registro de auditoría",
+        "Contrato de Consignación"
+      ],
+      "riesgos": [
+        "Deterioro de mercadería no detectado",
+        "Incumplimiento de condiciones de exhibición",
+        "Pérdida de control sobre stock consignado"
+      ],
+      "sistemas": [
+        "ERP",
+        "Correo electrónico"
+      ],
+      "salidas": [
+        "Mercadería controlada durante la consignación"
+      ]
+    },
+    {
+      "titulo": "Gestionar retorno de mercadería",
+      "responsable": "Asesor Comercial / Posventa / Coordinador de Recepción / Analista de Cuentas Corrientes / Jefe de Auditoría",
+      "texto": "El retorno de mercadería entregada para exhibición debe solicitarlo el Asesor Comercial al área de Posventa, quien realiza un retorno lógico e informa al Coordinador de Recepción, Cuentas Corrientes y Jefe de Auditoría.",
+      "controles": "Validar retorno lógico, comunicación a áreas involucradas y actualización de stock.",
+      "clave": "Retorno lógico registrado.",
+      "documentos": [
+        "Solicitud de retorno",
+        "Remito de retorno si corresponde"
+      ],
+      "riesgos": [
+        "No registrar retorno",
+        "Stock desactualizado",
+        "Falta de comunicación a áreas involucradas"
+      ],
+      "sistemas": [
+        "ERP",
+        "Correo electrónico",
+        "Posventa"
+      ],
+      "salidas": [
+        "Mercadería retornada o regularizada"
+      ]
+    }
+  ],
+  "excepciones": [
+    {
+      "caso": "Consignación supera 4 unidades BMC",
+      "accion": "Debe solicitarse autorización expresa de Gerencia antes de avanzar.",
+      "responsable": "Gerente Comercial"
+    },
+    {
+      "caso": "Cliente supera 3 consignaciones anuales",
+      "accion": "Solo puede continuar con autorización de Gerencia.",
+      "responsable": "Gerente Comercial"
+    },
+    {
+      "caso": "Cliente no cumple perfil crediticio o comercial",
+      "accion": "El supervisor informa la situación y Gerencia Comercial define si rechaza o autoriza excepcionalmente la consignación.",
+      "responsable": "Supervisor Comercial / Gerente Comercial"
+    },
+    {
+      "caso": "Cliente no está dado de alta como contacto",
+      "accion": "El Asesor Comercial solicita a Cuentas Corrientes realizar el alta correspondiente antes de continuar.",
+      "responsable": "Asesor Comercial / Analista de Cuentas Corrientes"
+    },
+    {
+      "caso": "Asesor no tiene acceso a carpeta Contratos Bici en SharePoint",
+      "accion": "Debe solicitar acceso al área de Cuentas Corrientes.",
+      "responsable": "Asesor Comercial / Cuentas Corrientes"
+    },
+    {
+      "caso": "No hay stock del producto pactado",
+      "accion": "El Asesor Comercial debe verificar sustitutos previamente acordados con el consignatario.",
+      "responsable": "Asesor Comercial"
+    },
+    {
+      "caso": "Mercadería debe enviarse desde la empresa y no desde consignación",
+      "accion": "El pedido debe consumir stock del almacén central.",
+      "responsable": "Asesor Comercial / Jefe de Auditoría"
+    },
+    {
+      "caso": "Finaliza el plazo de tres meses",
+      "accion": "Se renueva automáticamente por igual plazo salvo decisión de LH de no renovar; si no se renueva, se rescata la mercadería.",
+      "responsable": "Asesor Comercial / Jefe de Ventas"
+    },
+    {
+      "caso": "Reposición de mercadería consignada",
+      "accion": "Solo puede gestionarse al cierre del trimestre, informando el motivo y asegurando que el producto a reponer haya ingresado nuevamente al stock de LH.",
+      "responsable": "Asesor Comercial / Jefe de Ventas"
+    }
+  ]
+},{
+  "id": "lh-movilidad-electrica-venta-directa-lvn",
+  "nombre": "Procedimiento de venta directa Movilidad Eléctrica",
+  "sistema": "ERP / Odoo / Formulario Venta-Patentamiento / Cobranzas / Facturación",
+  "bi": "Sin tablero BI asociado",
+  "original": "https://lopezhnossa.sharepoint.com/:w:/s/ALLPROCESOS/IQBd3CM07tD_TrYyC1yL6UMWAZM4I6KISraEUSecYYmNnQw?e=oghePi",
+  "interactivo": true,
+  "tipo": "workflow",
+  "objetivo": "Establecer el procedimiento para la gestión de ventas directas de LVN, asegurando la correcta concreción de la operación, la trazabilidad del pedido, la validación del pago y la adecuada facturación de la venta.",
+  "responsables": [
+    "Asesor Comercial",
+    "Analista de Cuentas Corrientes",
+    "Jefe de Auditoría",
+    "Jefe de Logística",
+    "Administrador de GRAM",
+    "Cobranzas LH",
+    "Analista de Control Presupuestario",
+    "Jefe de Negocio Movilidad Eléctrica",
+    "Gerencia General",
+    "Responsable de Precios"
+  ],
+  "entradas": [
+    "Solicitud de venta directa",
+    "Datos del cliente o consumidor final",
+    "Formulario Venta-Patentamiento",
+    "Pedido cargado en ERP",
+    "Comprobante de pago",
+    "Lista de precios LVN actualizada",
+    "Documentación para patentamiento"
+  ],
+  "salidas": [
+    "Cliente dado de alta",
+    "Pedido LVN cargado en ERP",
+    "Pago validado",
+    "Factura emitida al consumidor final",
+    "Patentamiento gestionado cuando corresponda",
+    "Mercadería despachada con remito"
+  ],
+  "kpis": [
+    "Pedidos LVN cargados con tipo de pedido correcto",
+    "Pedidos con pago validado antes de facturar",
+    "Pedidos despachados con remito",
+    "Pedidos de motocicletas eléctricas despachados luego del patentamiento",
+    "Descuentos autorizados por Jefe de Negocio o Gerencia General",
+    "Facturas emitidas luego de pedido confirmado"
+  ],
+  "pasos": [
+    {
+      "titulo": "Definir modalidad de venta",
+      "responsable": "Asesor Comercial",
+      "texto": "Se verifica si la operación se realizará como venta directa o consignación. Debe elegirse una única modalidad.",
+      "controles": "Confirmar que no se utilicen simultáneamente consignación y venta directa.",
+      "clave": "Modalidad única definida.",
+      "documentos": [
+        "Solicitud de venta"
+      ],
+      "riesgos": [
+        "Duplicar modalidad comercial",
+        "Generar inconsistencias de stock o facturación"
+      ],
+      "sistemas": [
+        "ERP"
+      ],
+      "salidas": [
+        "Operación definida como venta directa"
+      ]
+    },
+    {
+      "titulo": "Verificar alta del cliente",
+      "responsable": "Asesor Comercial / Analista de Cuentas Corrientes",
+      "texto": "El Asesor Comercial corrobora que el cliente esté dado de alta en el ERP. Si no lo está, solicita el alta al Analista de Cuentas Corrientes.",
+      "controles": "Validar datos fiscales, contacto, domicilio y documentación según tipo de cliente.",
+      "clave": "Cliente disponible en ERP.",
+      "documentos": [
+        "Formulario de Alta de Cliente",
+        "Constancia de Alta ARCA",
+        "Certificado de ingresos brutos",
+        "CM05 si corresponde",
+        "DNI frente y dorso",
+        "Constancia CUIT/CUIL"
+      ],
+      "riesgos": [
+        "Operar con cliente no dado de alta",
+        "Datos fiscales incompletos",
+        "Demora en facturación"
+      ],
+      "sistemas": [
+        "ERP",
+        "Formulario Venta-Patentamiento"
+      ],
+      "salidas": [
+        "Cliente dado de alta o validado"
+      ]
+    },
+    {
+      "titulo": "Cargar pedido LVN",
+      "responsable": "Asesor Comercial",
+      "texto": "El Asesor Comercial carga el pedido en el módulo Ventas del ERP, seleccionando tipo de pedido LVN y almacén Normal para consumir stock del almacén central.",
+      "controles": "Verificar tipo de pedido, almacén, cliente, producto y stock.",
+      "clave": "Pedido LVN cargado desde almacén Normal.",
+      "documentos": [
+        "Pedido de venta"
+      ],
+      "riesgos": [
+        "Consumir stock de almacén incorrecto",
+        "Cargar tipo de pedido incorrecto",
+        "Facturar sin pedido"
+      ],
+      "sistemas": [
+        "ERP",
+        "Odoo"
+      ],
+      "salidas": [
+        "Pedido LVN cargado"
+      ]
+    },
+    {
+      "titulo": "Coordinar preparación y despacho",
+      "responsable": "Jefe de Auditoría / Jefe de Logística",
+      "texto": "El Asesor informa al Jefe de Auditoría para que coordine con Logística la preparación física del pedido a despachar.",
+      "controles": "No debe salir mercadería sin contrato, sin remito ni sin pedido.",
+      "clave": "Despacho respaldado documentalmente.",
+      "documentos": [
+        "Pedido de venta",
+        "Remito"
+      ],
+      "riesgos": [
+        "Salida de mercadería sin remito",
+        "Falta de trazabilidad logística",
+        "Despacho sin pedido confirmado"
+      ],
+      "sistemas": [
+        "ERP",
+        "Logística"
+      ],
+      "salidas": [
+        "Pedido preparado para despacho"
+      ]
+    },
+    {
+      "titulo": "Gestionar pedidos originados desde la web",
+      "responsable": "Asesor Comercial",
+      "texto": "La web LVN no cuenta con modalidad de pago directa. El cliente obtiene el contacto de un Asesor Comercial, quien gestiona el pedido hasta su concreción.",
+      "controles": "Confirmar que todo pedido web continúe por circuito comercial formal.",
+      "clave": "Pedido web gestionado por asesor.",
+      "documentos": [
+        "Contacto web",
+        "Pedido de venta"
+      ],
+      "riesgos": [
+        "Cliente asume pago directo inexistente",
+        "Pedido sin seguimiento comercial",
+        "Falta de trazabilidad del origen"
+      ],
+      "sistemas": [
+        "Sitio web LVN",
+        "ERP"
+      ],
+      "salidas": [
+        "Pedido web derivado a circuito comercial"
+      ]
+    },
+    {
+      "titulo": "Validar lista de precios",
+      "responsable": "Asesor Comercial / Responsable de Precios",
+      "texto": "El vendedor controla el precio contra la lista LVN base actualizada. Solo el responsable de Precios puede modificar precios.",
+      "controles": "Los descuentos deben estar autorizados por Jefe de Negocio o Gerencia General.",
+      "clave": "Precio validado.",
+      "documentos": [
+        "Lista de precios LVN",
+        "Autorización de descuento si corresponde"
+      ],
+      "riesgos": [
+        "Aplicar precio incorrecto",
+        "Otorgar descuentos no autorizados",
+        "Modificar precios sin permiso"
+      ],
+      "sistemas": [
+        "ERP",
+        "Ecommerce LVN"
+      ],
+      "salidas": [
+        "Precio correcto aplicado al pedido"
+      ]
+    },
+    {
+      "titulo": "Aplicar cupón por transferencia bancaria",
+      "responsable": "Asesor Comercial",
+      "texto": "Si la forma de pago es transferencia bancaria, el asesor debe agregar manualmente el cupón de descuento MOVELECTRICA antes de confirmar el pedido.",
+      "controles": "Confirmar forma de pago y aplicación del cupón antes de confirmar.",
+      "clave": "Cupón MOVELECTRICA aplicado.",
+      "documentos": [
+        "Pedido de venta"
+      ],
+      "riesgos": [
+        "No aplicar descuento correspondiente",
+        "Confirmar pedido con importe incorrecto"
+      ],
+      "sistemas": [
+        "ERP",
+        "Ecommerce LVN"
+      ],
+      "salidas": [
+        "Pedido confirmado con cupón correcto"
+      ]
+    },
+    {
+      "titulo": "Gestionar pago con tarjeta",
+      "responsable": "Asesor Comercial / Administrador de GRAM / Analista de Cuentas Corrientes",
+      "texto": "Para pagos con tarjeta, el Asesor solicita a Administración GRAM el link de pago. GRAM genera el recibo, verifica datos y montos, e informa a Cuentas Corrientes para control.",
+      "controles": "Validar que datos y montos coincidan con el pedido solicitado.",
+      "clave": "Link de pago y recibo generados.",
+      "documentos": [
+        "Link de pago",
+        "Recibo",
+        "Comprobante de pago"
+      ],
+      "riesgos": [
+        "Link generado por importe incorrecto",
+        "Pago no asociado al pedido",
+        "Falta de control de Cuentas Corrientes"
+      ],
+      "sistemas": [
+        "Link de pago",
+        "ERP",
+        "Correo electrónico"
+      ],
+      "salidas": [
+        "Pago con tarjeta gestionado"
+      ]
+    },
+    {
+      "titulo": "Gestionar pago por transferencia o depósito",
+      "responsable": "Asesor Comercial / Cobranzas LH / Analista de Cuentas Corrientes",
+      "texto": "Si el pago es por depósito o transferencia, debe realizarse a la cuenta de LH e informarse a cobranzas@lopezhnos.com.ar. Cuentas Corrientes controla la acreditación.",
+      "controles": "Verificar acreditación en cuenta de LH antes de confirmar definitivamente el pedido.",
+      "clave": "Pago acreditado.",
+      "documentos": [
+        "Comprobante de transferencia",
+        "Correo a Cobranzas"
+      ],
+      "riesgos": [
+        "Confirmar pedido sin pago acreditado",
+        "Transferencia a cuenta incorrecta",
+        "Transferencias desde cuentas personales del asesor"
+      ],
+      "sistemas": [
+        "Cobranzas",
+        "Correo electrónico",
+        "ERP"
+      ],
+      "salidas": [
+        "Pago validado para continuar"
+      ]
+    },
+    {
+      "titulo": "Confirmar pedido luego de validar pago",
+      "responsable": "Analista de Cuentas Corrientes",
+      "texto": "Luego del cruce de información y validación del pago, el Analista de Cuentas Corrientes confirma definitivamente el pedido.",
+      "controles": "Confirmar pedido solo con pago validado y documentación respaldatoria.",
+      "clave": "Pedido confirmado por Cuentas Corrientes.",
+      "documentos": [
+        "Pedido",
+        "Comprobante de pago",
+        "Validación de Cobranzas"
+      ],
+      "riesgos": [
+        "Confirmar pedido sin pago",
+        "Falta de respaldo documental",
+        "Error en estado del pedido"
+      ],
+      "sistemas": [
+        "ERP",
+        "Cobranzas"
+      ],
+      "salidas": [
+        "Pedido confirmado"
+      ]
+    },
+    {
+      "titulo": "Facturar venta directa",
+      "responsable": "Analista de Cuentas Corrientes",
+      "texto": "El Analista de Cuentas Corrientes realiza la facturación manual al Consumidor Final una vez confirmado el pedido.",
+      "controles": "No facturar sin pedido confirmado y pago validado.",
+      "clave": "Factura manual emitida.",
+      "documentos": [
+        "Factura",
+        "Pedido confirmado"
+      ],
+      "riesgos": [
+        "Facturar sin pedido",
+        "Facturar sin pago validado",
+        "Errores de datos del consumidor final"
+      ],
+      "sistemas": [
+        "ERP",
+        "Facturación"
+      ],
+      "salidas": [
+        "Factura emitida al Consumidor Final"
+      ]
+    },
+    {
+      "titulo": "Gestionar patentamiento",
+      "responsable": "Analista de Control Presupuestario",
+      "texto": "Para motocicletas eléctricas, el pedido no puede despacharse hasta que el patentamiento esté realizado. En ventas a Consumidor Final, el patentamiento está a cargo de la empresa.",
+      "controles": "Validar factura con número de motor, chasis y certificado de importación, DNI, datos personales y domicilio.",
+      "clave": "Patentamiento finalizado antes del despacho.",
+      "documentos": [
+        "Formulario Venta-Patentamiento",
+        "Factura de venta",
+        "DNI frente y dorso",
+        "Datos personales y de contacto",
+        "Número de motor",
+        "Número de chasis",
+        "Certificado de importación"
+      ],
+      "riesgos": [
+        "Despachar motocicleta sin patentamiento",
+        "Datos incompletos para trámite",
+        "Demora en entrega por documentación faltante"
+      ],
+      "sistemas": [
+        "Formulario Venta-Patentamiento",
+        "ERP"
+      ],
+      "salidas": [
+        "Patentamiento gestionado"
+      ]
+    },
+    {
+      "titulo": "Despachar mercadería",
+      "responsable": "Jefe de Logística / Jefe de Auditoría",
+      "texto": "Una vez cumplidos los requisitos de pago, facturación, pedido y patentamiento si corresponde, se procede al despacho de la mercadería con remito.",
+      "controles": "Confirmar remito, pedido y condiciones previas al despacho.",
+      "clave": "Despacho con remito y requisitos cumplidos.",
+      "documentos": [
+        "Remito",
+        "Pedido confirmado",
+        "Factura",
+        "Constancia de patentamiento si corresponde"
+      ],
+      "riesgos": [
+        "Despacho sin remito",
+        "Despacho antes del patentamiento",
+        "Entrega sin trazabilidad"
+      ],
+      "sistemas": [
+        "ERP",
+        "Logística"
+      ],
+      "salidas": [
+        "Mercadería entregada o despachada"
+      ]
+    }
+  ],
+  "excepciones": [
+    {
+      "caso": "Cliente no está dado de alta",
+      "accion": "El Asesor Comercial solicita al Analista de Cuentas Corrientes realizar el alta correspondiente antes de continuar.",
+      "responsable": "Asesor Comercial / Analista de Cuentas Corrientes"
+    },
+    {
+      "caso": "Pedido originado desde la web LVN",
+      "accion": "El cliente debe comunicarse con un Asesor Comercial, ya que la web no posee modalidad de pago directa.",
+      "responsable": "Asesor Comercial"
+    },
+    {
+      "caso": "Descuento sobre lista de precios",
+      "accion": "Debe ser autorizado por el Jefe de Negocio o Gerencia General. Solo el responsable de Precios puede modificar precios.",
+      "responsable": "Jefe de Negocio Movilidad Eléctrica / Gerencia General / Responsable de Precios"
+    },
+    {
+      "caso": "Forma de pago transferencia bancaria",
+      "accion": "El Asesor debe agregar manualmente el cupón MOVELECTRICA antes de confirmar el pedido.",
+      "responsable": "Asesor Comercial"
+    },
+    {
+      "caso": "Forma de pago diferente a tarjeta, depósito o transferencia",
+      "accion": "El Asesor debe comunicarse previamente con el área de Cobranzas.",
+      "responsable": "Asesor Comercial / Cobranzas LH"
+    },
+    {
+      "caso": "Pago en efectivo",
+      "accion": "No está permitido recibir dinero en efectivo sin emisión del correspondiente recibo manual de LH.",
+      "responsable": "Asesor Comercial / Cobranzas LH"
+    },
+    {
+      "caso": "Transferencia desde cuenta personal del Asesor Comercial",
+      "accion": "No está permitido realizar transferencias desde cuentas personales del Asesor Comercial.",
+      "responsable": "Asesor Comercial"
+    },
+    {
+      "caso": "Venta a consumidor final de motocicleta eléctrica",
+      "accion": "El pedido no puede despacharse hasta que el patentamiento esté realizado por la empresa.",
+      "responsable": "Analista de Control Presupuestario"
+    },
+    {
+      "caso": "Venta a tienda habitualista",
+      "accion": "El patentamiento queda bajo responsabilidad de la concesionaria habitualista.",
+      "responsable": "Tienda habitualista"
+    }
+  ]
+},{
+  "id": "lh-comercial-ventas-gestion-comercial-b2b",
+  "nombre": "Proceso Gestión Comercial LH",
+  "sistema": "ERP Odoo / CRM Odoo / Power BI / Ticketera Post Venta Odoo",
+  "bi": "Tableros comerciales BI",
+  "original": "https://lopezhnossa.sharepoint.com/:w:/s/ALLPROCESOS/IQCnVf7-YGdHTpYGuvDicVRrASNz_ixGLcfLeIofjerMfTA?e=EoF6Ex",
+  "interactivo": true,
+  "tipo": "workflow",
+  "objetivo": "Ofrecer una visión clara del proceso de venta B2B y su registro en Odoo, alineando objetivos comerciales con criterios de registro, detectando oportunidades de mejora y asegurando claridad en la gestión de ventas.",
+  "responsables": [
+    "Asesor Comercial",
+    "Analista Comercial",
+    "Analista de Costos",
+    "Analista de Cuentas Corrientes",
+    "Coordinadora de Ventas",
+    "Logística",
+    "Facturación",
+    "Responsable Contable",
+    "Post Venta",
+    "Gerente Comercial"
+  ],
+  "entradas": [
+    "Cliente dado de alta",
+    "Presupuesto en Odoo",
+    "Lista de precios vigente",
+    "Descuentos o promociones aplicables",
+    "Aprobación de crédito",
+    "Pedido de venta",
+    "Remito",
+    "Comprobante de pago",
+    "Reclamos post venta si corresponde"
+  ],
+  "salidas": [
+    "Presupuesto generado",
+    "Pedido de venta confirmado",
+    "Pedido preparado y despachado",
+    "Factura emitida",
+    "Pago imputado",
+    "Conciliación realizada",
+    "Comisiones liquidadas",
+    "Reclamos derivados a Post Venta"
+  ],
+  "kpis": [
+    "Presupuestos convertidos a pedidos",
+    "Pedidos cancelados",
+    "Pedidos parcialmente preparados",
+    "Pedidos abiertos en estado a facturar",
+    "Pedidos facturados",
+    "Pagos imputados",
+    "Reclamos derivados a Post Venta dentro de 48 horas hábiles"
+  ],
+  "pasos": [
+    {
+      "titulo": "Crear presupuesto",
+      "responsable": "Asesor Comercial",
+      "texto": "El asesor carga el presupuesto en Odoo para avanzar en la negociación con el cliente, acordando cantidades, productos, precios y condiciones.",
+      "controles": "Verificar que el cliente esté dado de alta y que los precios correspondan a listas vigentes.",
+      "clave": "Presupuesto en estado Presupuesto.",
+      "documentos": [
+        "Presupuesto Odoo",
+        "Lista de precios vigente"
+      ],
+      "riesgos": [
+        "Cargar presupuesto a cliente no dado de alta",
+        "Aplicar precios desactualizados",
+        "No definir correctamente cantidades o condiciones"
+      ],
+      "sistemas": [
+        "ERP Odoo",
+        "CRM Odoo"
+      ],
+      "salidas": [
+        "Presupuesto cargado"
+      ]
+    },
+    {
+      "titulo": "Validar descuentos y promociones",
+      "responsable": "Analista Comercial / Analista de Costos",
+      "texto": "El Analista Comercial verifica y aprueba descuentos y promociones según la política comercial vigente. El Analista de Costos administra y parametriza listas de precios.",
+      "controles": "Los descuentos deben respetar límites por rol; toda excepción requiere aprobación de Gerencia Comercial.",
+      "clave": "Descuento aprobado.",
+      "documentos": [
+        "Política comercial vigente",
+        "Lista de precios",
+        "Autorización de excepción"
+      ],
+      "riesgos": [
+        "Aplicar descuentos fuera de política",
+        "No parametrizar precios correctamente",
+        "Aprobar excepciones sin respaldo"
+      ],
+      "sistemas": [
+        "ERP Odoo",
+        "Correo electrónico"
+      ],
+      "salidas": [
+        "Descuento validado o corregido"
+      ]
+    },
+    {
+      "titulo": "Enviar presupuesto al cliente",
+      "responsable": "Asesor Comercial",
+      "texto": "El presupuesto se envía al cliente para revisión y aprobación directamente desde Odoo.",
+      "controles": "Mientras no esté confirmado, el presupuesto puede modificarse. Una vez aceptado, pasa a pedido de venta.",
+      "clave": "Presupuesto enviado.",
+      "documentos": [
+        "Presupuesto enviado por Odoo"
+      ],
+      "riesgos": [
+        "Enviar presupuesto incompleto",
+        "Modificar condiciones sin control",
+        "No registrar aceptación del cliente"
+      ],
+      "sistemas": [
+        "ERP Odoo",
+        "Correo electrónico"
+      ],
+      "salidas": [
+        "Presupuesto enviado al cliente"
+      ]
+    },
+    {
+      "titulo": "Aprobar crédito del cliente",
+      "responsable": "Analista Comercial / Analista de Cuentas Corrientes",
+      "texto": "La aprobación del pedido queda condicionada por la disponibilidad de crédito del cliente. Cuentas Corrientes aprueba el crédito y asigna el límite correspondiente.",
+      "controles": "Evaluar historial de compra, comportamiento financiero y estado de facturas.",
+      "clave": "Crédito aprobado.",
+      "documentos": [
+        "Estado de cuenta",
+        "Evaluación crediticia",
+        "Límite de crédito"
+      ],
+      "riesgos": [
+        "Confirmar pedido sin crédito suficiente",
+        "Otorgar crédito sin análisis",
+        "No contemplar facturas pendientes"
+      ],
+      "sistemas": [
+        "ERP Odoo",
+        "Cuentas Corrientes"
+      ],
+      "salidas": [
+        "Presupuesto convertido en Sales Order"
+      ]
+    },
+    {
+      "titulo": "Confirmar pedido de venta",
+      "responsable": "Asesor Comercial / Cuentas Corrientes",
+      "texto": "Una vez aceptado el presupuesto por el cliente y aprobado el crédito, el presupuesto se convierte en pedido de venta oficial.",
+      "controles": "Validar que el pedido refleje las unidades, precios y descuentos confirmados.",
+      "clave": "Pedido en estado Sales Order.",
+      "documentos": [
+        "Pedido de venta",
+        "Presupuesto aprobado"
+      ],
+      "riesgos": [
+        "Confirmar pedido con diferencias respecto del presupuesto",
+        "No validar crédito",
+        "Registrar compromiso de venta incorrecto"
+      ],
+      "sistemas": [
+        "ERP Odoo"
+      ],
+      "salidas": [
+        "Pedido de venta confirmado"
+      ]
+    },
+    {
+      "titulo": "Bloquear pedido confirmado",
+      "responsable": "Sistema Odoo / Comercial",
+      "texto": "El pedido confirmado pasa a estado Locked para evitar cambios no autorizados que afecten la preparación logística.",
+      "controles": "No modificar pedidos bloqueados sin autorización.",
+      "clave": "Pedido en estado Locked.",
+      "documentos": [
+        "Pedido de venta bloqueado"
+      ],
+      "riesgos": [
+        "Cambios no autorizados",
+        "Errores en preparación logística",
+        "Diferencias entre pedido y despacho"
+      ],
+      "sistemas": [
+        "ERP Odoo"
+      ],
+      "salidas": [
+        "Pedido bloqueado para preparación"
+      ]
+    },
+    {
+      "titulo": "Cancelar pedido si corresponde",
+      "responsable": "Analista Comercial / Coordinadora de Ventas",
+      "texto": "El pedido puede cancelarse por solicitud del cliente, error de carga o imposibilidad de cumplimiento. Antes de cancelar, debe comunicarse a Logística para verificar que no haya sido procesado.",
+      "controles": "Confirmar con Logística que el pedido no fue preparado ni reservado.",
+      "clave": "Pedido cancelado con control logístico.",
+      "documentos": [
+        "Pedido cancelado",
+        "Comunicación a Logística"
+      ],
+      "riesgos": [
+        "Cancelar pedido ya preparado",
+        "Reservar mercadería innecesariamente",
+        "Falta de comunicación entre áreas"
+      ],
+      "sistemas": [
+        "ERP Odoo",
+        "Correo electrónico"
+      ],
+      "salidas": [
+        "Pedido cancelado o mantenido según estado logístico"
+      ]
+    },
+    {
+      "titulo": "Hacer seguimiento de pedidos",
+      "responsable": "Asesor Comercial",
+      "texto": "El asesor realiza seguimiento a pedidos confirmados, cancelados o parcialmente preparados mediante tableros comerciales en BI.",
+      "controles": "Revisar estado previo al PICK, luego del PICK y pedidos con preparación parcial.",
+      "clave": "Seguimiento en tableros BI.",
+      "documentos": [
+        "Tableros comerciales BI"
+      ],
+      "riesgos": [
+        "No detectar pedidos parciales",
+        "No gestionar reemplazo de productos faltantes",
+        "No informar al cliente"
+      ],
+      "sistemas": [
+        "Power BI",
+        "ERP Odoo"
+      ],
+      "salidas": [
+        "Pedido monitoreado comercialmente"
+      ]
+    },
+    {
+      "titulo": "Controlar descuentos al confirmar pedido",
+      "responsable": "Asesor Comercial",
+      "texto": "El asesor controla que al confirmar el pedido el cálculo de descuentos corresponda a las unidades efectivamente confirmadas, no al presupuesto original si existen diferencias.",
+      "controles": "Comparar unidades presupuestadas contra unidades confirmadas.",
+      "clave": "Descuento calculado sobre pedido actual.",
+      "documentos": [
+        "Presupuesto",
+        "Pedido confirmado"
+      ],
+      "riesgos": [
+        "Aplicar descuento incorrecto",
+        "Facturar con condiciones erróneas",
+        "Generar reclamos comerciales"
+      ],
+      "sistemas": [
+        "ERP Odoo"
+      ],
+      "salidas": [
+        "Descuento validado sobre pedido confirmado"
+      ]
+    },
+    {
+      "titulo": "Ejecutar proceso logístico de salida",
+      "responsable": "Logística",
+      "texto": "El pedido avanza por el proceso logístico de salida en cuatro etapas: PICK, PACK, OUT y remito.",
+      "controles": "Controlar preparación, empaque, despacho y emisión de remito.",
+      "clave": "Remito generado.",
+      "documentos": [
+        "Remito",
+        "Proceso de Salida"
+      ],
+      "riesgos": [
+        "Preparación parcial no informada",
+        "Despacho incorrecto",
+        "Falta de remito para facturación"
+      ],
+      "sistemas": [
+        "ERP Odoo",
+        "Logística"
+      ],
+      "salidas": [
+        "Pedido preparado y despachado"
+      ]
+    },
+    {
+      "titulo": "Facturar pedido",
+      "responsable": "Facturación / Analista de Cuentas",
+      "texto": "Luego de generado el remito, Facturación emite la factura correspondiente. El pedido permanece en estado Nada que Facturar hasta que se imprime el remito.",
+      "controles": "Controlar mensualmente que no existan pedidos abiertos en estado A facturar.",
+      "clave": "Factura emitida luego del remito.",
+      "documentos": [
+        "Remito",
+        "Factura",
+        "Procedimiento de Facturación"
+      ],
+      "riesgos": [
+        "Facturar sin remito",
+        "Dejar pedidos abiertos a facturar",
+        "Errores de facturación"
+      ],
+      "sistemas": [
+        "ERP Odoo",
+        "Facturación"
+      ],
+      "salidas": [
+        "Factura emitida"
+      ]
+    },
+    {
+      "titulo": "Gestionar cobranza",
+      "responsable": "Asesor Comercial / Cliente / Cuentas Corrientes",
+      "texto": "El asesor puede gestionar la cobranza personalmente o el cliente puede realizar el pago y enviar el comprobante a Cuentas Corrientes.",
+      "controles": "Validar comprobante y asociación con la cuenta del cliente.",
+      "clave": "Pago recibido o informado.",
+      "documentos": [
+        "Comprobante de pago"
+      ],
+      "riesgos": [
+        "Pago no informado",
+        "Comprobante no imputado",
+        "Error de asociación a cliente"
+      ],
+      "sistemas": [
+        "Correo electrónico",
+        "Cuentas Corrientes",
+        "ERP Odoo"
+      ],
+      "salidas": [
+        "Pago disponible para imputación"
+      ]
+    },
+    {
+      "titulo": "Imputar pago",
+      "responsable": "Cuentas Corrientes",
+      "texto": "El responsable de Cuentas Corrientes registra el pago en la cuenta del cliente.",
+      "controles": "Validar cliente, factura, importe y medio de pago.",
+      "clave": "Pago imputado.",
+      "documentos": [
+        "Comprobante de pago",
+        "Cuenta corriente del cliente"
+      ],
+      "riesgos": [
+        "Imputar a cliente incorrecto",
+        "No aplicar el pago a la factura correspondiente",
+        "Diferencias de saldo"
+      ],
+      "sistemas": [
+        "ERP Odoo",
+        "Cuentas Corrientes"
+      ],
+      "salidas": [
+        "Pago registrado en cuenta del cliente"
+      ]
+    },
+    {
+      "titulo": "Conciliar pagos",
+      "responsable": "Responsable Contable",
+      "texto": "El responsable contable realiza la conciliación de los pagos registrados.",
+      "controles": "Comparar registros contables, movimientos bancarios y pagos imputados.",
+      "clave": "Conciliación realizada.",
+      "documentos": [
+        "Proceso de Conciliación Bancaria",
+        "Movimientos bancarios"
+      ],
+      "riesgos": [
+        "Pagos sin conciliar",
+        "Diferencias contables",
+        "Saldos incorrectos"
+      ],
+      "sistemas": [
+        "ERP Odoo",
+        "Sistema contable"
+      ],
+      "salidas": [
+        "Pagos conciliados"
+      ]
+    },
+    {
+      "titulo": "Liquidar comisiones",
+      "responsable": "Área Comercial",
+      "texto": "El responsable del área comercial liquida las comisiones de asesores por ventas y cobranzas.",
+      "controles": "Validar ventas, cobranzas, penalizaciones y reglas de comisión.",
+      "clave": "Comisiones liquidadas.",
+      "documentos": [
+        "Liquidación de comisiones",
+        "Reporte de ventas",
+        "Reporte de cobranzas"
+      ],
+      "riesgos": [
+        "Liquidar comisiones incorrectas",
+        "No considerar penalizaciones",
+        "Errores por ventas o cobranzas no conciliadas"
+      ],
+      "sistemas": [
+        "ERP Odoo",
+        "Excel"
+      ],
+      "salidas": [
+        "Comisiones calculadas"
+      ]
+    },
+    {
+      "titulo": "Derivar reclamos a Post Venta",
+      "responsable": "Asesor Comercial / Post Venta",
+      "texto": "Una vez cerrado el pedido, los reclamos se centralizan en el Área de Post Venta. El contacto debe derivarse al asesor B2B o DTC de Post Venta según corresponda.",
+      "controles": "Post Venta debe dar curso al reclamo por Ticketera de Odoo dentro de 48 horas hábiles.",
+      "clave": "Reclamo gestionado en Ticketera.",
+      "documentos": [
+        "Ticket de reclamo",
+        "Ticketera de Reclamos Post Venta"
+      ],
+      "riesgos": [
+        "Reclamos gestionados fuera del circuito",
+        "Demoras superiores a 48 horas hábiles",
+        "Falta de trazabilidad del reclamo"
+      ],
+      "sistemas": [
+        "Ticketera Post Venta Odoo",
+        "Power BI"
+      ],
+      "salidas": [
+        "Reclamo derivado y gestionado por Post Venta"
+      ]
+    }
+  ],
+  "excepciones": [
+    {
+      "caso": "Cliente no está dado de alta",
+      "accion": "No se debe cargar presupuesto hasta completar el alta según procedimiento ABM de cliente.",
+      "responsable": "Asesor Comercial"
+    },
+    {
+      "caso": "Descuento excede límites por rol",
+      "accion": "Debe solicitarse aprobación del Gerente Comercial.",
+      "responsable": "Analista Comercial / Gerente Comercial"
+    },
+    {
+      "caso": "Cliente no tiene crédito suficiente",
+      "accion": "Cuentas Corrientes define si extiende o no el límite antes de confirmar el pedido.",
+      "responsable": "Analista de Cuentas Corrientes"
+    },
+    {
+      "caso": "Pedido debe cancelarse",
+      "accion": "Analista Comercial o Coordinadora de Ventas deben comunicar previamente a Logística para confirmar que no fue procesado.",
+      "responsable": "Analista Comercial / Coordinadora de Ventas"
+    },
+    {
+      "caso": "Pedido preparado parcialmente",
+      "accion": "Se factura solo lo enviado y el asesor puede generar un nuevo pedido por artículos sustitutos en stock.",
+      "responsable": "Asesor Comercial"
+    },
+    {
+      "caso": "Pedido queda abierto en estado A facturar",
+      "accion": "Facturación debe controlarlo mensualmente y regularizarlo.",
+      "responsable": "Facturación"
+    },
+    {
+      "caso": "Reclamo posterior al cierre del pedido",
+      "accion": "Debe derivarse a Post Venta B2B o DTC para gestión en Ticketera Odoo dentro de 48 horas hábiles.",
+      "responsable": "Asesor Comercial / Post Venta"
+    }
+  ]
+},{
+  "id": "lh-abastecimiento-liquidaciones-gestion-articulos-liq",
+  "nombre": "Gestión de Artículos LIQ",
+  "sistema": "ERP / Stock LIQ / BI / E-commerce / Postventa",
+  "bi": "Abastecimiento - ABC Inventario / Ventas - Indicadores Comerciales / Gestión de Postventa / Gestión de Liquidaciones",
+  "original": "https://lopezhnossa.sharepoint.com/:w:/s/ALLPROCESOS/IQCekRpjRcFlQaCUDw9Rvpn5AYo2L0kdE_Pd5e0yDqoRZUA?e=3dzZlG",
+  "interactivo": true,
+  "tipo": "workflow",
+  "objetivo": "Identificar, clasificar, valorizar y comercializar mercadería con daño, falla o condición especial mediante una política estandarizada de liquidación.",
+  "responsables": [
+    "Operario Fábrica / Depósito",
+    "Calidad",
+    "Auditoría",
+    "Comercial",
+    "Pricing",
+    "Sistemas",
+    "Facturación",
+    "E-commerce / Ventas",
+    "Postventa"
+  ],
+  "entradas": [
+    "Mercadería con daño",
+    "Mercadería con falla",
+    "Devolución",
+    "Producto incompleto",
+    "Embalaje roto",
+    "Producto reparado o reacondicionado"
+  ],
+  "salidas": [
+    "Producto clasificado como LIQ",
+    "SKU LIQ generado",
+    "Descuento asignado",
+    "Stock separado en ubicación LIQ",
+    "Producto publicado o habilitado para venta",
+    "Reclamos LIQ monitoreados"
+  ],
+  "kpis": [
+    "Stock LIQ por tipo de daño",
+    "Aging de stock LIQ",
+    "Descuento aplicado por categoría",
+    "Margen recuperado",
+    "Ventas LIQ",
+    "Reclamos LIQ",
+    "Recupero sobre costo",
+    "Top categorías dañadas",
+    "Origen del daño"
+  ],
+  "pasos": [
+    {
+      "titulo": "Detectar producto con condición especial",
+      "responsable": "Operario Fábrica / Depósito",
+      "texto": "Se detecta mercadería con daño, falla, devolución, embalaje roto o producto incompleto.",
+      "controles": "Separar físicamente el producto y evitar que continúe como stock normal.",
+      "clave": "Producto identificado como potencial LIQ.",
+      "documentos": [
+        "Registro de detección",
+        "Fotos del producto"
+      ],
+      "riesgos": [
+        "Producto dañado mezclado con stock normal",
+        "Falta de trazabilidad del origen",
+        "Clasificación subjetiva"
+      ],
+      "sistemas": [
+        "ERP",
+        "Stock"
+      ],
+      "salidas": [
+        "Producto separado para evaluación"
+      ]
+    },
+    {
+      "titulo": "Clasificar tipo de daño",
+      "responsable": "Calidad / Auditoría",
+      "texto": "Se clasifica el daño o condición del producto según categorías formales como estético leve, estético visible, embalaje, funcional leve, funcional importante o reparado.",
+      "controles": "Aplicar criterios técnicos homogéneos definidos por fábrica y calidad.",
+      "clave": "Categoría LIQ asignada.",
+      "documentos": [
+        "Tabla de clasificación de daños",
+        "Criterios técnicos de aceptación"
+      ],
+      "riesgos": [
+        "Clasificación inconsistente",
+        "Descuento no alineado al estado real",
+        "Reclamos por diferencias entre publicación y producto"
+      ],
+      "sistemas": [
+        "ERP",
+        "Planilla de clasificación"
+      ],
+      "salidas": [
+        "Producto clasificado por tipo de daño"
+      ]
+    },
+    {
+      "titulo": "Evaluar funcionalidad y seguridad",
+      "responsable": "Calidad / Auditoría",
+      "texto": "Se valida si el producto es seguro, funcional, reparable, vendible o si debe destinarse a desarme o scrap.",
+      "controles": "No habilitar para venta productos inseguros o sin posibilidad de uso adecuado.",
+      "clave": "Aprobación técnica para venta.",
+      "documentos": [
+        "Informe técnico",
+        "Registro de evaluación"
+      ],
+      "riesgos": [
+        "Vender productos no aptos",
+        "Generar reclamos o devoluciones",
+        "Riesgo para el cliente"
+      ],
+      "sistemas": [
+        "ERP"
+      ],
+      "salidas": [
+        "Producto aprobado para LIQ o derivado a scrap/desarme"
+      ]
+    },
+    {
+      "titulo": "Definir estrategia comercial",
+      "responsable": "Comercial / Pricing",
+      "texto": "Se define el descuento, canal de venta, condiciones comerciales y si el producto puede publicarse en web o requiere venta asistida.",
+      "controles": "El descuento debe ser coherente con la categoría de daño y margen esperado.",
+      "clave": "Política comercial LIQ definida.",
+      "documentos": [
+        "Tabla de descuentos sugeridos",
+        "Política comercial LIQ"
+      ],
+      "riesgos": [
+        "Pérdida de margen",
+        "Descuentos discrecionales",
+        "Condiciones comerciales poco claras"
+      ],
+      "sistemas": [
+        "ERP",
+        "BI"
+      ],
+      "salidas": [
+        "Descuento y canal de venta definidos"
+      ]
+    },
+    {
+      "titulo": "Generar SKU LIQ",
+      "responsable": "Sistemas",
+      "texto": "Se genera un SKU identificado con LIQ, incorporando referencia al SKU original y, cuando corresponda, el tipo de daño.",
+      "controles": "Asegurar trazabilidad entre SKU original, SKU LIQ y categoría de daño.",
+      "clave": "SKU LIQ único y trazable.",
+      "documentos": [
+        "Solicitud de creación de SKU",
+        "Registro SKU original vs SKU LIQ"
+      ],
+      "riesgos": [
+        "SKU duplicado",
+        "Pérdida de trazabilidad",
+        "No identificar condición LIQ en sistema"
+      ],
+      "sistemas": [
+        "ERP",
+        "Sistemas"
+      ],
+      "salidas": [
+        "SKU LIQ creado"
+      ]
+    },
+    {
+      "titulo": "Ingresar producto a stock LIQ",
+      "responsable": "Auditoría / Depósito",
+      "texto": "El producto se mueve a una ubicación física separada del stock normal, manteniendo inventario y trazabilidad independientes.",
+      "controles": "Validar ubicación, cantidad, SKU LIQ y estado del producto.",
+      "clave": "Stock LIQ separado.",
+      "documentos": [
+        "Movimiento de stock",
+        "Inventario LIQ"
+      ],
+      "riesgos": [
+        "Mezclar LIQ con stock normal",
+        "Errores de inventario",
+        "Producto no disponible para venta"
+      ],
+      "sistemas": [
+        "ERP",
+        "Stock LIQ"
+      ],
+      "salidas": [
+        "Producto disponible en stock LIQ"
+      ]
+    },
+    {
+      "titulo": "Publicar o habilitar para venta",
+      "responsable": "E-commerce / Ventas",
+      "texto": "Se publica o habilita el producto para venta según el canal definido, aclarando condición, tipo de daño, descuento y restricciones si corresponde.",
+      "controles": "La publicación debe describir claramente el estado real del producto.",
+      "clave": "Producto LIQ correctamente informado al cliente.",
+      "documentos": [
+        "Publicación web",
+        "Descripción comercial",
+        "Condiciones de venta LIQ"
+      ],
+      "riesgos": [
+        "Cliente no informado del estado real",
+        "Reclamos por falta de claridad",
+        "Venta por canal no permitido"
+      ],
+      "sistemas": [
+        "E-commerce",
+        "ERP",
+        "Ventas"
+      ],
+      "salidas": [
+        "Producto LIQ publicado o habilitado para venta"
+      ]
+    },
+    {
+      "titulo": "Facturar venta LIQ",
+      "responsable": "Facturación",
+      "texto": "Facturación controla la documentación y emite la factura correspondiente al producto LIQ vendido.",
+      "controles": "Verificar SKU LIQ, precio con descuento aplicado y documentación respaldatoria.",
+      "clave": "Factura LIQ emitida correctamente.",
+      "documentos": [
+        "Factura",
+        "Pedido de venta"
+      ],
+      "riesgos": [
+        "Facturar SKU incorrecto",
+        "Aplicar precio no aprobado",
+        "Falta de respaldo documental"
+      ],
+      "sistemas": [
+        "ERP",
+        "Facturación"
+      ],
+      "salidas": [
+        "Venta LIQ facturada"
+      ]
+    },
+    {
+      "titulo": "Monitorear reclamos LIQ",
+      "responsable": "Postventa",
+      "texto": "Postventa gestiona y monitorea reclamos asociados a productos LIQ para evaluar tasa de devolución, recurrencia y causas.",
+      "controles": "Relacionar reclamo con SKU LIQ, tipo de daño y canal de venta.",
+      "clave": "Reclamo LIQ trazable.",
+      "documentos": [
+        "Ticket de reclamo",
+        "Registro Postventa"
+      ],
+      "riesgos": [
+        "No diferenciar reclamos LIQ de reclamos normales",
+        "No detectar categorías problemáticas",
+        "Repetir errores de clasificación"
+      ],
+      "sistemas": [
+        "Postventa",
+        "BI",
+        "ERP"
+      ],
+      "salidas": [
+        "Reclamos LIQ gestionados y medidos"
+      ]
+    },
+    {
+      "titulo": "Analizar indicadores LIQ",
+      "responsable": "Comercial / Abastecimiento / BI",
+      "texto": "Se analizan indicadores de stock LIQ, aging, descuentos, margen recuperado, ventas, reclamos, recupero sobre costo, categorías dañadas y origen del daño.",
+      "controles": "Separar liquidación comercial de liquidación por daño para evitar análisis incorrectos.",
+      "clave": "Tablero Gestión de Liquidaciones.",
+      "documentos": [
+        "Tablero Gestión de Liquidaciones",
+        "ABC Inventario",
+        "Indicadores Comerciales",
+        "Gestión de Postventa"
+      ],
+      "riesgos": [
+        "No medir recupero financiero",
+        "Mezclar causas distintas de liquidación",
+        "No detectar patrones de daño"
+      ],
+      "sistemas": [
+        "Power BI",
+        "ERP"
+      ],
+      "salidas": [
+        "Indicadores LIQ disponibles para gestión"
+      ]
+    }
+  ],
+  "excepciones": [
+    {
+      "caso": "Producto con embalaje dañado",
+      "accion": "Debe pasar por fábrica para reprocesarse antes de definir si puede venderse como LIQ.",
+      "responsable": "Fábrica / Calidad"
+    },
+    {
+      "caso": "Producto no apto para venta",
+      "accion": "Debe derivarse a desarme o scrap según evaluación técnica.",
+      "responsable": "Auditoría / Calidad"
+    },
+    {
+      "caso": "Bicicletas con daño al salir de fábrica",
+      "accion": "Deben pasar por Auditoría para que Gerencia defina si van a desarme o a liquidación.",
+      "responsable": "Auditoría / Gerencia"
+    },
+    {
+      "caso": "Bicipartes enviadas a buffer o scrap sin clasificación",
+      "accion": "Debe evaluarse si el volumen es significativo para justificar un circuito específico con identificación de SKU y criterios de aceptación.",
+      "responsable": "Auditoría / Fábrica / Comercial"
+    },
+    {
+      "caso": "Descuento fuera de tabla sugerida",
+      "accion": "Debe ser validado por Comercial o Pricing antes de publicar o vender.",
+      "responsable": "Comercial / Pricing"
+    },
+    {
+      "caso": "Producto reparado o reacondicionado",
+      "accion": "Debe identificarse como LIQ-R o categoría equivalente, indicando claramente su condición.",
+      "responsable": "Calidad / Sistemas / Comercial"
+    }
+  ]
+},{
+            "id": "lh-comercial-gestion-venta",
+            "nombre": "Carpeta Gestión de venta",
+            "sistema": "CRM / Odoo / Ventas",
+            "bi": "Ventas → Indicadores Comerciales",
+            "original": "https://lopezhnossa.sharepoint.com/sites/ALLPROCESOS/Documentos%20compartidos/BANCO%20DE%20PROCESOS%20AS%20IS/Procesos%20LH/6-%20Comercial/Gesti%C3%B3n%20de%20venta",
+            "interactivo": true,
+            "tipo": "workflow",
+            "kpis": [
+              "Ventas realizadas",
+              "Pedidos pendientes",
+              "Conversión comercial",
+              "Facturación"
+            ],
+            "pasos": [
+              {
                 "titulo": "Generación de oportunidad",
                 "responsable": "Asesor Comercial",
                 "texto": "Se identifica oportunidad comercial.",
@@ -7284,6 +8930,1727 @@
         "path": "Gestión Estratégica Comercial",
         "procesos": [
           {
+  "id": "lh-comercial-precios-modificacion-grupo-precios",
+  "nombre": "Modificación de Grupo de Precios",
+  "sistema": "Sistema AX / Correo electrónico / Radiografía de Cartera / Excel de cumplimiento",
+  "bi": "Sin tablero BI asociado",
+  "original": "https://lopezhnossa.sharepoint.com/:b:/s/ALLPROCESOS/IQAPqPMmXmQzT62FDWTBx9tKARPbNpl-YHuM681wZuUbn1Q?e=E04K5D",
+  "interactivo": true,
+  "tipo": "workflow",
+  "objetivo": "Estandarizar y definir los pasos para solicitar el cambio de grupo de precios en la ficha de un cliente o en un pedido de ventas.",
+  "responsables": [
+    "Asesor Comercial",
+    "Supervisor Comercial",
+    "Analista Comercial",
+    "Gerente Comercial"
+  ],
+  "entradas": [
+    "Radiografía de Cartera",
+    "Promedio mensual de compras",
+    "Compromiso mensual pactado con el cliente",
+    "Solicitud de cambio de GP",
+    "Autorización de Gerencia en caso de excepción",
+    "Número de PDV si aplica"
+  ],
+  "salidas": [
+    "Grupo de Precios modificado en ficha del cliente",
+    "Afiliación modificada en pedido de ventas",
+    "Solicitud rechazada con motivo",
+    "Cumplimiento mensual observado",
+    "Beneficio GP 01 mantenido o retirado"
+  ],
+  "kpis": [
+    "Plazo máximo de modificación en sistema de 12 horas",
+    "Promedio mensual mínimo para GP 01 de $1.000.000",
+    "Actualización del promedio mínimo cada 6 meses según inflación",
+    "Observaciones enviadas entre el día 1 y 10 de cada mes",
+    "Control trimestral de cumplimiento de política",
+    "Cantidad de excepciones aprobadas por Gerencia"
+  ],
+  "pasos": [
+    {
+      "titulo": "Verificar condiciones para GP 01 en ficha",
+      "responsable": "Asesor Comercial",
+      "texto": "El asesor verifica en la Radiografía de Cartera que el cliente cumpla con el promedio mensual de compras requerido durante los últimos 6 meses.",
+      "controles": "Validar promedio mensual vigente informado por Gerencia Comercial.",
+      "clave": "Promedio mensual de compras.",
+      "documentos": [
+        "Radiografía de Cartera"
+      ],
+      "riesgos": [
+        "Solicitar GP 01 sin cumplir promedio",
+        "Usar información desactualizada",
+        "Otorgar beneficio sin respaldo"
+      ],
+      "sistemas": [
+        "Sistema AX",
+        "Excel"
+      ],
+      "salidas": [
+        "Cliente validado para solicitud de GP"
+      ]
+    },
+    {
+      "titulo": "Solicitar cambio de GP al supervisor",
+      "responsable": "Asesor Comercial",
+      "texto": "El asesor solicita por mail al supervisor la modificación del Grupo de Precios usando el template correspondiente.",
+      "controles": "Completar nombre del cliente, promedio mensual, compromiso mensual, solicitud 01 o 02, ficha o pedido y comentarios.",
+      "clave": "Template completo.",
+      "documentos": [
+        "Template de solicitud de cambio de GP",
+        "Mail solicitante"
+      ],
+      "riesgos": [
+        "Solicitud incompleta",
+        "No indicar si aplica a ficha o pedido",
+        "No informar compromiso mensual"
+      ],
+      "sistemas": [
+        "Correo electrónico"
+      ],
+      "salidas": [
+        "Solicitud enviada al supervisor"
+      ]
+    },
+    {
+      "titulo": "Solicitar excepción a Gerencia",
+      "responsable": "Supervisor Comercial / Gerente Comercial",
+      "texto": "Si el cliente no cumple el promedio mensual requerido o el compromiso no supera el importe establecido, el supervisor solicita autorización de excepción a Gerencia Comercial.",
+      "controles": "Adjuntar autorización de Gerencia a la solicitud enviada al Analista Comercial.",
+      "clave": "Autorización de excepción.",
+      "documentos": [
+        "Mail de autorización de Gerencia",
+        "Template con comentarios"
+      ],
+      "riesgos": [
+        "Otorgar GP 01 sin autorización",
+        "No dejar asentada la excepción",
+        "Aplicar condición diferencial sin respaldo"
+      ],
+      "sistemas": [
+        "Correo electrónico"
+      ],
+      "salidas": [
+        "Excepción aprobada o rechazada"
+      ]
+    },
+    {
+      "titulo": "Enviar solicitud formal al Analista Comercial",
+      "responsable": "Supervisor Comercial",
+      "texto": "El supervisor verifica la solicitud y la envía por mail al Analista Comercial con el asunto 'Solicitud de cambio de GP: NOMBRE DEL CLIENTE'.",
+      "controles": "Validar asunto, template completo y autorización adjunta si corresponde.",
+      "clave": "Solicitud formal enviada.",
+      "documentos": [
+        "Mail de solicitud de cambio de GP",
+        "Template completo",
+        "Autorización de Gerencia si aplica"
+      ],
+      "riesgos": [
+        "Asunto incorrecto",
+        "Falta de autorización",
+        "Demora en modificación"
+      ],
+      "sistemas": [
+        "Correo electrónico"
+      ],
+      "salidas": [
+        "Analista Comercial recibe solicitud"
+      ]
+    },
+    {
+      "titulo": "Modificar GP en ficha del cliente",
+      "responsable": "Analista Comercial",
+      "texto": "El Analista Comercial verifica el cumplimiento de condiciones y realiza el cambio correspondiente en la ficha del cliente.",
+      "controles": "Realizar la modificación en un plazo máximo de 12 horas desde la recepción del mail.",
+      "clave": "Grupo de Gastos modificado.",
+      "documentos": [
+        "Solicitud de cambio de GP",
+        "Radiografía de Cartera"
+      ],
+      "riesgos": [
+        "Modificar cliente incorrecto",
+        "No cumplir plazo de 12 horas",
+        "Modificar sin validar condiciones"
+      ],
+      "sistemas": [
+        "Sistema AX"
+      ],
+      "salidas": [
+        "GP actualizado en ficha del cliente"
+      ]
+    },
+    {
+      "titulo": "Verificar modificación en ficha",
+      "responsable": "Asesor Comercial",
+      "texto": "El asesor verifica la modificación en AX siguiendo la ruta LHSA/Ventas y marketing/Común/Clientes/Todos los clientes, columna Grupo de Gastos.",
+      "controles": "Confirmar que el cliente tenga GP 01 o GP 02 según lo solicitado.",
+      "clave": "Grupo de Gastos verificado.",
+      "documentos": [
+        "Ficha del cliente"
+      ],
+      "riesgos": [
+        "No detectar modificación incorrecta",
+        "Operar con grupo de precios equivocado"
+      ],
+      "sistemas": [
+        "Sistema AX"
+      ],
+      "salidas": [
+        "Modificación confirmada"
+      ]
+    },
+    {
+      "titulo": "Solicitar GP 01 en pedido de ventas",
+      "responsable": "Asesor Comercial",
+      "texto": "Para modificar GP en un pedido, el asesor consensúa con el cliente un compromiso de compra mayor o igual al importe requerido y solicita el cambio al supervisor usando el template.",
+      "controles": "Indicar número de PDV en comentarios y completar todos los datos del template.",
+      "clave": "PDV identificado.",
+      "documentos": [
+        "Template de solicitud",
+        "Número de PDV",
+        "Compromiso mensual"
+      ],
+      "riesgos": [
+        "No indicar PDV",
+        "Modificar pedido incorrecto",
+        "Otorgar descuento sin compromiso suficiente"
+      ],
+      "sistemas": [
+        "Correo electrónico",
+        "Sistema AX"
+      ],
+      "salidas": [
+        "Solicitud de modificación en pedido enviada"
+      ]
+    },
+    {
+      "titulo": "Modificar afiliación en pedido de ventas",
+      "responsable": "Analista Comercial",
+      "texto": "El Analista Comercial verifica condiciones y realiza el cambio de afiliación en el PDV detallado.",
+      "controles": "Validar cumplimiento del compromiso y autorización de Gerencia si corresponde.",
+      "clave": "Afiliación del PDV modificada.",
+      "documentos": [
+        "Solicitud de cambio de GP",
+        "Autorización de Gerencia si aplica"
+      ],
+      "riesgos": [
+        "Modificar PDV incorrecto",
+        "Aplicar Af 01 sin autorización",
+        "No responder la solicitud"
+      ],
+      "sistemas": [
+        "Sistema AX"
+      ],
+      "salidas": [
+        "Afiliación del pedido actualizada"
+      ]
+    },
+    {
+      "titulo": "Verificar descuento en pedido",
+      "responsable": "Asesor Comercial",
+      "texto": "El asesor verifica la modificación revisando los totales del pedido en el cuadro Descuento de línea y calculando Descuento de línea dividido Importe del subtotal.",
+      "controles": "Confirmar que el descuento obtenido corresponda a la afiliación aplicada.",
+      "clave": "Descuento de línea validado.",
+      "documentos": [
+        "Pedido de Ventas",
+        "Totales del pedido"
+      ],
+      "riesgos": [
+        "No detectar descuento incorrecto",
+        "Confirmar pedido con afiliación errónea"
+      ],
+      "sistemas": [
+        "Sistema AX"
+      ],
+      "salidas": [
+        "Afiliación verificada en pedido"
+      ]
+    },
+    {
+      "titulo": "Controlar cumplimiento mensual",
+      "responsable": "Analista Comercial",
+      "texto": "Mensualmente el Analista Comercial verifica el cumplimiento de compromisos al cierre del mes con el informe de ventas en lista 01.",
+      "controles": "Enviar observaciones al supervisor entre el día 1 y 10 de cada mes.",
+      "clave": "Cumplimiento de compromiso mensual.",
+      "documentos": [
+        "Informe de ventas en lista 01",
+        "Excel de cumplimiento de compromisos"
+      ],
+      "riesgos": [
+        "No detectar incumplimientos",
+        "Mantener beneficios sin cumplimiento",
+        "No informar observaciones en plazo"
+      ],
+      "sistemas": [
+        "Excel",
+        "Sistema AX",
+        "Correo electrónico"
+      ],
+      "salidas": [
+        "Observaciones mensuales enviadas"
+      ]
+    },
+    {
+      "titulo": "Realizar control trimestral de política",
+      "responsable": "Analista Comercial",
+      "texto": "El Analista Comercial realiza un control trimestral para verificar el cumplimiento de la política de GP. Si existe incumplimiento, se plantea al cliente la continuidad del beneficio buscando alcanzar el objetivo al mes siguiente.",
+      "controles": "Considerar los 3 avisos mensuales previos antes de retirar el beneficio.",
+      "clave": "Control trimestral de GP.",
+      "documentos": [
+        "Excel de cumplimiento",
+        "Observaciones mensuales"
+      ],
+      "riesgos": [
+        "Retirar beneficio sin avisos previos",
+        "Mantener beneficio sin cumplimiento",
+        "Falta de trazabilidad del seguimiento"
+      ],
+      "sistemas": [
+        "Excel",
+        "Correo electrónico",
+        "Sistema AX"
+      ],
+      "salidas": [
+        "Beneficio mantenido, observado o retirado"
+      ]
+    },
+    {
+      "titulo": "Solicitar cambio de GP 01 a GP 02",
+      "responsable": "Asesor Comercial / Supervisor Comercial",
+      "texto": "Para quitar el beneficio, el asesor solicita el cambio siguiendo el template e indicando en comentarios el motivo. El supervisor envía la solicitud autorizada al Analista Comercial.",
+      "controles": "Incluir motivo claro y autorización del supervisor.",
+      "clave": "Motivo de baja del beneficio.",
+      "documentos": [
+        "Template de solicitud",
+        "Mail autorizado por supervisor"
+      ],
+      "riesgos": [
+        "Quitar beneficio sin motivo",
+        "No comunicar criterio aplicado",
+        "Generar conflicto comercial"
+      ],
+      "sistemas": [
+        "Correo electrónico"
+      ],
+      "salidas": [
+        "Solicitud de cambio a GP 02 enviada"
+      ]
+    },
+    {
+      "titulo": "Analizar cambio de GP 01 a GP 02",
+      "responsable": "Analista Comercial",
+      "texto": "El Analista Comercial analiza la solicitud según el criterio establecido. Si corresponde, realiza la modificación; si no corresponde, responde con motivos.",
+      "controles": "En caso de falta de consenso con el supervisor, elevar a mando superior directo.",
+      "clave": "Decisión sobre retiro de beneficio.",
+      "documentos": [
+        "Solicitud de cambio a GP 02",
+        "Análisis del criterio"
+      ],
+      "riesgos": [
+        "Retirar beneficio sin análisis",
+        "No resolver desacuerdo entre áreas",
+        "Falta de respuesta formal"
+      ],
+      "sistemas": [
+        "Sistema AX",
+        "Correo electrónico"
+      ],
+      "salidas": [
+        "GP modificado o solicitud rechazada con motivo"
+      ]
+    },
+    {
+      "titulo": "Solicitar excepción de modificación de GP",
+      "responsable": "Asesor Comercial / Supervisor Comercial",
+      "texto": "Cuando por propuesta comercial se requieren modificaciones no contempladas, como usar ambos GP durante el mismo período mensual, el asesor presenta la propuesta al supervisor con el asunto 'Excepción modificación de GP: NOMBRE DEL CLIENTE'.",
+      "controles": "Indicar cliente, solicitud, motivos y objetivo, evaluando la conveniencia comercial de la acción.",
+      "clave": "Excepción comercial fundamentada.",
+      "documentos": [
+        "Template de excepción",
+        "Mail de excepción modificación de GP"
+      ],
+      "riesgos": [
+        "Usar condiciones múltiples sin control",
+        "Afectar rentabilidad",
+        "No documentar objetivo comercial"
+      ],
+      "sistemas": [
+        "Correo electrónico"
+      ],
+      "salidas": [
+        "Propuesta excepcional enviada para análisis"
+      ]
+    },
+    {
+      "titulo": "Resolver excepción de GP",
+      "responsable": "Supervisor Comercial / Analista Comercial / Gerencia",
+      "texto": "El supervisor analiza la alternativa y solicita al Analista Comercial la modificación correspondiente. El Analista responde según criterio; si no hay consenso, se eleva a mando superior.",
+      "controles": "Validar fundamento, impacto comercial y autorización cuando corresponda.",
+      "clave": "Resolución de excepción.",
+      "documentos": [
+        "Solicitud de excepción",
+        "Respuesta del Analista Comercial",
+        "Definición de mando superior si aplica"
+      ],
+      "riesgos": [
+        "Aplicar excepción sin aprobación",
+        "No escalar desacuerdos",
+        "Generar precedentes sin control"
+      ],
+      "sistemas": [
+        "Correo electrónico",
+        "Sistema AX"
+      ],
+      "salidas": [
+        "Excepción aprobada, aplicada o rechazada"
+      ]
+    }
+  ],
+  "excepciones": [
+    {
+      "caso": "Cliente no cumple promedio mensual requerido para GP 01",
+      "accion": "El supervisor debe solicitar autorización de excepción a Gerencia Comercial y adjuntarla a la solicitud.",
+      "responsable": "Supervisor Comercial / Gerente Comercial"
+    },
+    {
+      "caso": "Compromiso del pedido no supera el importe establecido",
+      "accion": "El supervisor debe solicitar autorización previa a Gerencia y dejarla asentada en comentarios del template.",
+      "responsable": "Supervisor Comercial / Gerente Comercial"
+    },
+    {
+      "caso": "Se solicita quitar beneficio GP 01",
+      "accion": "El asesor debe indicar el motivo en comentarios y el Analista Comercial analiza la solicitud antes de modificar.",
+      "responsable": "Asesor Comercial / Analista Comercial"
+    },
+    {
+      "caso": "No hay consenso entre Supervisor y Analista Comercial",
+      "accion": "Se solicita definición del caso al mando superior directo.",
+      "responsable": "Supervisor Comercial / Analista Comercial"
+    },
+    {
+      "caso": "Necesidad de usar ambos GP durante el mismo período mensual",
+      "accion": "Debe enviarse una solicitud de excepción con cliente, solicitud, motivos y objetivo, usando el asunto 'Excepción modificación de GP'.",
+      "responsable": "Asesor Comercial / Supervisor Comercial / Analista Comercial"
+    },
+    {
+      "caso": "Incumplimiento sostenido del compromiso",
+      "accion": "Luego de los avisos mensuales y el control trimestral, el Analista Comercial puede retirar el beneficio GP si corresponde.",
+      "responsable": "Analista Comercial"
+    }
+  ]
+},{
+  "id": "lh-comercial-giras-gira-comercial-primer-etapa",
+  "nombre": "Gira Comercial - Primer Etapa",
+  "sistema": "Excel PCG / MOREAPP / PowerApps PCG Llamadas-Visitas / Correo electrónico / Caja / RRHH",
+  "bi": "Sin tablero BI asociado",
+  "original": "https://lopezhnossa.sharepoint.com/:b:/s/ALLPROCESOS/IQB0qrbLfQhMSKzEwspwmt8XATumbUWwHARE-GoaC-D8JuY?e=GsaAdb",
+  "interactivo": true,
+  "tipo": "workflow",
+  "objetivo": "Planificar, organizar y ejecutar de forma ordenada y estratégica las visitas a los clientes de la cartera para cumplir con el objetivo propuesto previamente.",
+  "responsables": [
+    "Asesor Comercial",
+    "Supervisor Comercial",
+    "Gerente Comercial",
+    "Analista Comercial",
+    "Administración",
+    "Caja",
+    "Marketing",
+    "RRHH",
+    "Guardia"
+  ],
+  "entradas": [
+    "Planificación anual de giras",
+    "Planificación mensual",
+    "Radiografía de cartera",
+    "Mix de artículos",
+    "Zonas de cobertura",
+    "Planilla PCG",
+    "Estado del vehículo en MOREAPP",
+    "Tabla de viáticos vigente",
+    "Solicitud de material POP",
+    "Solicitud de recibos",
+    "Documentación para clientes"
+  ],
+  "salidas": [
+    "PCG completo y enviado",
+    "Viáticos y recibos retirados",
+    "Material POP retirado",
+    "Vehículo autorizado para retiro",
+    "Visitas realizadas y registradas",
+    "Cobranzas realizadas con recibos oficiales",
+    "Bolsines depositados en buzón",
+    "Vehículo devuelto y estado cargado"
+  ],
+  "kpis": [
+    "Planificación mensual enviada la semana anterior al inicio del mes",
+    "PCG enviado el miércoles previo a la gira",
+    "Solicitud de viáticos presentada hasta el jueves previo a la gira",
+    "Autorización de retiro de vehículo enviada el viernes previo a la gira",
+    "Material POP retirado hasta el viernes previo a la gira",
+    "Visitas cargadas diariamente al cierre de jornada",
+    "Vehículo devuelto el mismo día de llegada salvo autorización"
+  ],
+  "pasos": [
+    {
+      "titulo": "Definir planificación anual",
+      "responsable": "Gerente Comercial / Analista Comercial",
+      "texto": "Treinta días antes del inicio del año fiscal se define y envía por mail la planificación anual a los supervisores para determinar giras cuatrimestrales y mensuales.",
+      "controles": "Validar alineación con el plan estratégico comercial.",
+      "clave": "Planificación anual enviada.",
+      "documentos": [
+        "Planificación anual de giras"
+      ],
+      "riesgos": [
+        "Planificar giras sin criterio estratégico",
+        "No informar a supervisores a tiempo"
+      ],
+      "sistemas": [
+        "Correo electrónico"
+      ],
+      "salidas": [
+        "Base anual para planificación de giras"
+      ]
+    },
+    {
+      "titulo": "Presentar planificación mensual",
+      "responsable": "Supervisor Comercial",
+      "texto": "La semana anterior al inicio del mes, los supervisores presentan la planificación mensual considerando la planificación anual, detallando gira, provincias, duración, perfil del vendedor, vehículo y frecuencia.",
+      "controles": "Enviar planificación a fuerza de ventas, analista y gerente comercial.",
+      "clave": "Planificación mensual validada.",
+      "documentos": [
+        "Planificación mensual de giras"
+      ],
+      "riesgos": [
+        "No coordinar recursos",
+        "Falta de visibilidad de giras",
+        "Superposición de vehículos o zonas"
+      ],
+      "sistemas": [
+        "Correo electrónico"
+      ],
+      "salidas": [
+        "Giras mensuales comunicadas"
+      ]
+    },
+    {
+      "titulo": "Verificar estado del vehículo antes de la gira",
+      "responsable": "Asesor Comercial",
+      "texto": "El asesor carga en MOREAPP el estado del vehículo antes de iniciar la gira, registrando cada detalle mediante Nuevo Registro / Check List de Vehículo.",
+      "controles": "Agregar email para recibir el registro y adjuntarlo al envío de PCG.",
+      "clave": "Estado del vehículo registrado.",
+      "documentos": [
+        "Registro MOREAPP de estado del vehículo"
+      ],
+      "riesgos": [
+        "Iniciar gira con vehículo sin control",
+        "No documentar daños previos",
+        "Falta de respaldo ante reclamos"
+      ],
+      "sistemas": [
+        "MOREAPP"
+      ],
+      "salidas": [
+        "Check list de vehículo generado"
+      ]
+    },
+    {
+      "titulo": "Armar PCG de la gira",
+      "responsable": "Asesor Comercial",
+      "texto": "El asesor arma la planificación de gira comercial completando las tres primeras solapas del PCG con datos de la gira, clientes de cartera y prospectos.",
+      "controles": "Usar Radiografía de Cartera y Mix de Artículos para definir objetivos y priorizar visitas.",
+      "clave": "PCG completo.",
+      "documentos": [
+        "Excel PCG",
+        "Radiografía de Cartera",
+        "Mix de Artículos"
+      ],
+      "riesgos": [
+        "Planificar sin análisis previo",
+        "No priorizar clientes estratégicos",
+        "Objetivos poco claros"
+      ],
+      "sistemas": [
+        "Excel PCG"
+      ],
+      "salidas": [
+        "Planilla PCG preparada"
+      ]
+    },
+    {
+      "titulo": "Completar portada del PCG",
+      "responsable": "Asesor Comercial",
+      "texto": "Se completa la portada con responsable de gira, asesores que viajan, supervisor responsable, responsable de cubrir la zona, zona a visitar, fechas de egreso y regreso, vehículo, viáticos solicitados y responsable del viático.",
+      "controles": "Calcular viáticos según tabla vigente, zona y días de viaje.",
+      "clave": "Portada PCG completa.",
+      "documentos": [
+        "PCG - Portada",
+        "Tabla de viáticos vigente"
+      ],
+      "riesgos": [
+        "Calcular mal viáticos",
+        "No definir responsable de viáticos",
+        "No cubrir zona durante la ausencia"
+      ],
+      "sistemas": [
+        "Excel PCG"
+      ],
+      "salidas": [
+        "Datos generales de gira registrados"
+      ]
+    },
+    {
+      "titulo": "Completar clientes de cartera a visitar",
+      "responsable": "Asesor Comercial",
+      "texto": "Se completa la segunda solapa con clientes de cartera contactados, localidad, cita concreta, fecha, análisis previo, objetivo de la cita y negociación previa.",
+      "controles": "Organizar por fecha y localidad; cumplir el mínimo de clientes a visitar definido por Gerencia.",
+      "clave": "Clientes de cartera planificados.",
+      "documentos": [
+        "PCG - Clientes de cartera"
+      ],
+      "riesgos": [
+        "No pactar citas",
+        "No cumplir mínimo de visitas",
+        "No definir objetivo por cliente"
+      ],
+      "sistemas": [
+        "Excel PCG"
+      ],
+      "salidas": [
+        "Agenda de clientes de cartera planificada"
+      ]
+    },
+    {
+      "titulo": "Completar prospectos a visitar",
+      "responsable": "Asesor Comercial",
+      "texto": "Se completa la tercera solapa con clientes prospectos contactados, nombre o fantasía, localidad, dirección, cita concreta, objetivo buscado y fecha de cita.",
+      "controles": "Cruzar prospectos con clientes de cartera para organizar la gira y cumplir el mínimo definido por Gerencia.",
+      "clave": "Prospectos planificados.",
+      "documentos": [
+        "PCG - Prospectos"
+      ],
+      "riesgos": [
+        "No desarrollar prospectos",
+        "No coordinar citas",
+        "Perder oportunidades comerciales"
+      ],
+      "sistemas": [
+        "Excel PCG"
+      ],
+      "salidas": [
+        "Agenda de prospectos planificada"
+      ]
+    },
+    {
+      "titulo": "Enviar PCG al supervisor",
+      "responsable": "Asesor Comercial",
+      "texto": "El asesor envía por mail al supervisor el miércoles previo a la gira la planilla PCG completa junto con el estado del vehículo. También solicita recibos y viáticos.",
+      "controles": "Adjuntar PCG, registro MOREAPP y solicitud de recibos si corresponde.",
+      "clave": "Envío miércoles previo.",
+      "documentos": [
+        "Mail al supervisor",
+        "Excel PCG",
+        "Registro MOREAPP"
+      ],
+      "riesgos": [
+        "Enviar fuera de plazo",
+        "Enviar PCG incompleto",
+        "No solicitar recibos o viáticos"
+      ],
+      "sistemas": [
+        "Correo electrónico",
+        "Excel PCG",
+        "MOREAPP"
+      ],
+      "salidas": [
+        "Supervisor recibe PCG para análisis"
+      ]
+    },
+    {
+      "titulo": "Solicitar material POP",
+      "responsable": "Asesor Comercial / Supervisor Comercial",
+      "texto": "El asesor solicita al supervisor el material POP necesario según cantidad y tipo de clientes a visitar. El supervisor lo solicita a Marketing si corresponde.",
+      "controles": "Considerar segmentación de cartera, tamaño del cliente, forecast de Marketing y objetivos del ejercicio.",
+      "clave": "Material POP solicitado.",
+      "documentos": [
+        "Solicitud de material POP",
+        "PCG"
+      ],
+      "riesgos": [
+        "No contar con material en gira",
+        "Solicitar cantidades incorrectas",
+        "No respetar procedimiento de material POP"
+      ],
+      "sistemas": [
+        "Correo electrónico"
+      ],
+      "salidas": [
+        "Material POP solicitado a Marketing"
+      ]
+    },
+    {
+      "titulo": "Analizar PCG y solicitar viáticos",
+      "responsable": "Supervisor Comercial",
+      "texto": "El supervisor analiza el PCG y solicita a Caja los viáticos y recibos correspondientes, con plazo máximo el jueves previo a la gira.",
+      "controles": "Validar planificación, objetivos, viáticos y recibos requeridos.",
+      "clave": "Solicitud presentada hasta el jueves previo.",
+      "documentos": [
+        "PCG",
+        "Solicitud de viáticos",
+        "Solicitud de recibos"
+      ],
+      "riesgos": [
+        "Aprobar PCG sin análisis",
+        "No solicitar viáticos a tiempo",
+        "Falta de recibos para cobranzas"
+      ],
+      "sistemas": [
+        "Correo electrónico",
+        "Caja"
+      ],
+      "salidas": [
+        "Viáticos y recibos solicitados"
+      ]
+    },
+    {
+      "titulo": "Retirar viáticos y recibos",
+      "responsable": "Asesor Comercial / Caja",
+      "texto": "El asesor retira en Caja los viáticos correspondientes y los recibos si aplica. Ambos quedan asentados en las planillas correspondientes.",
+      "controles": "Registrar retiro de viáticos y recibos.",
+      "clave": "Viáticos y recibos retirados.",
+      "documentos": [
+        "Planilla de viáticos retirados",
+        "Planilla de retiro de recibos",
+        "Recibos físicos"
+      ],
+      "riesgos": [
+        "Retiro sin registro",
+        "Falta de control de recibos",
+        "Diferencias en rendición posterior"
+      ],
+      "sistemas": [
+        "Caja"
+      ],
+      "salidas": [
+        "Recursos administrativos entregados para gira"
+      ]
+    },
+    {
+      "titulo": "Solicitar documentación para clientes",
+      "responsable": "Asesor Comercial / Supervisor Comercial / Administración",
+      "texto": "El asesor solicita al supervisor, al menos el jueves previo a la gira, la documentación a completar o devolver al cliente, como planillas de alta o devolución de cheques. El supervisor lo gestiona con Administración.",
+      "controles": "Solicitar documentación antes del inicio de la gira y dejar trazabilidad por mail.",
+      "clave": "Documentación requerida gestionada.",
+      "documentos": [
+        "Planilla de alta",
+        "Documentación de cliente",
+        "Devolución de cheques"
+      ],
+      "riesgos": [
+        "No llevar documentación necesaria",
+        "No resolver trámites con clientes",
+        "Demoras administrativas"
+      ],
+      "sistemas": [
+        "Correo electrónico"
+      ],
+      "salidas": [
+        "Documentación lista para gira"
+      ]
+    },
+    {
+      "titulo": "Retirar material POP",
+      "responsable": "Asesor Comercial / Marketing",
+      "texto": "El asesor retira el material POP entregado por Marketing, a más tardar el viernes previo a la gira.",
+      "controles": "Verificar cantidades y destino del material.",
+      "clave": "Material POP retirado hasta viernes previo.",
+      "documentos": [
+        "Registro de entrega de material POP"
+      ],
+      "riesgos": [
+        "No retirar material a tiempo",
+        "Material incorrecto",
+        "Falta de control de entrega"
+      ],
+      "sistemas": [
+        "Marketing",
+        "Correo electrónico"
+      ],
+      "salidas": [
+        "Material POP disponible para gira"
+      ]
+    },
+    {
+      "titulo": "Enviar autorización de retiro de vehículo",
+      "responsable": "Supervisor Comercial",
+      "texto": "El supervisor envía a RRHH y Guardia la autorización de inicio de gira y retiro de vehículo con fecha, el viernes previo a la gira.",
+      "controles": "Confirmar fecha de inicio, vehículo autorizado y asesores involucrados.",
+      "clave": "Autorización enviada a RRHH y Guardia.",
+      "documentos": [
+        "Mail de autorización de retiro de vehículo"
+      ],
+      "riesgos": [
+        "No poder retirar vehículo",
+        "Salida sin autorización formal",
+        "Falta de control de Guardia"
+      ],
+      "sistemas": [
+        "Correo electrónico"
+      ],
+      "salidas": [
+        "Vehículo habilitado para retiro"
+      ]
+    },
+    {
+      "titulo": "Gestionar suspensión de gira",
+      "responsable": "Asesor Comercial / Supervisor Comercial",
+      "texto": "Si la gira se suspende por fuerza mayor, el asesor debe informar inmediatamente al supervisor por mail o WhatsApp, indicando motivo y presentando documentación respaldatoria.",
+      "controles": "Devolver viáticos, recibos y material POP el día previsto de inicio de la gira.",
+      "clave": "Suspensión informada y justificada.",
+      "documentos": [
+        "Mail de suspensión",
+        "Documentación respaldatoria",
+        "Comprobante de devolución de viáticos, recibos y material POP"
+      ],
+      "riesgos": [
+        "Suspender sin justificación",
+        "No devolver recursos entregados",
+        "Falta de trazabilidad"
+      ],
+      "sistemas": [
+        "Correo electrónico",
+        "WhatsApp"
+      ],
+      "salidas": [
+        "Gira suspendida formalmente"
+      ]
+    },
+    {
+      "titulo": "Ejecutar visitas durante la gira",
+      "responsable": "Asesor Comercial",
+      "texto": "Durante la gira, el asesor realiza diariamente las visitas a clientes y prospectos detallados en el PCG.",
+      "controles": "Respetar planificación, objetivos y citas pactadas.",
+      "clave": "Visitas ejecutadas según PCG.",
+      "documentos": [
+        "PCG",
+        "Registro de visitas"
+      ],
+      "riesgos": [
+        "No cumplir agenda",
+        "No visitar prospectos",
+        "No alcanzar objetivos de gira"
+      ],
+      "sistemas": [
+        "PCG",
+        "PowerApps PCG Llamadas/Visitas"
+      ],
+      "salidas": [
+        "Clientes y prospectos visitados"
+      ]
+    },
+    {
+      "titulo": "Realizar cobranzas en gira",
+      "responsable": "Asesor Comercial",
+      "texto": "El asesor realiza cobranzas a clientes cuando corresponde, utilizando recibos oficiales de la empresa.",
+      "controles": "Emitir recibos oficiales y custodiar fondos hasta su depósito o rendición.",
+      "clave": "Cobranza con recibo oficial.",
+      "documentos": [
+        "Recibos oficiales",
+        "Registro de cobranza"
+      ],
+      "riesgos": [
+        "Cobrar sin recibo",
+        "Pérdida de fondos",
+        "Diferencias de rendición"
+      ],
+      "sistemas": [
+        "Recibos físicos"
+      ],
+      "salidas": [
+        "Cobranzas realizadas con respaldo"
+      ]
+    },
+    {
+      "titulo": "Cargar visitas al cierre de jornada",
+      "responsable": "Asesor Comercial",
+      "texto": "Al cierre de cada jornada, el asesor registra las visitas realizadas en PCG LLAMADAS/VISITAS.",
+      "controles": "Realizar carga diaria y completa.",
+      "clave": "Registro diario de visitas.",
+      "documentos": [
+        "Registro PCG Llamadas/Visitas"
+      ],
+      "riesgos": [
+        "No registrar visitas",
+        "Carga tardía o incompleta",
+        "Pérdida de información comercial"
+      ],
+      "sistemas": [
+        "PowerApps PCG Llamadas/Visitas"
+      ],
+      "salidas": [
+        "Visitas cargadas diariamente"
+      ]
+    },
+    {
+      "titulo": "Actuar ante accidente o eventualidad",
+      "responsable": "Asesor Comercial",
+      "texto": "Ante accidente o eventualidad, el asesor debe llamar a las autoridades locales, luego al servicio de emergencias si corresponde y posteriormente a cualquier supervisor disponible.",
+      "controles": "Priorizar asistencia, seguridad y comunicación inmediata.",
+      "clave": "Supervisor informado ante eventualidad.",
+      "documentos": [
+        "Registro de accidente o eventualidad"
+      ],
+      "riesgos": [
+        "No activar asistencia",
+        "No informar a la empresa",
+        "Falta de respaldo del incidente"
+      ],
+      "sistemas": [
+        "Teléfono",
+        "WhatsApp",
+        "Correo electrónico"
+      ],
+      "salidas": [
+        "Eventualidad gestionada"
+      ]
+    },
+    {
+      "titulo": "Devolver vehículo al finalizar la gira",
+      "responsable": "Asesor Comercial",
+      "texto": "Al finalizar la gira, el asesor devuelve el vehículo el mismo día de llegada a Resistencia, salvo autorización correspondiente, y carga nuevamente el estado del vehículo en MOREAPP.",
+      "controles": "Comparar estado inicial y final del vehículo.",
+      "clave": "Vehículo devuelto y estado final cargado.",
+      "documentos": [
+        "Registro MOREAPP final"
+      ],
+      "riesgos": [
+        "No devolver vehículo en plazo",
+        "No registrar daños posteriores",
+        "Falta de trazabilidad sobre estado del vehículo"
+      ],
+      "sistemas": [
+        "MOREAPP"
+      ],
+      "salidas": [
+        "Vehículo devuelto y controlado"
+      ]
+    },
+    {
+      "titulo": "Depositar bolsines en buzón",
+      "responsable": "Asesor Comercial",
+      "texto": "Al regreso, el asesor deposita los bolsines en el buzón ubicado en el pasillo de ingreso por RRHH, si corresponde.",
+      "controles": "Depositar recaudación según procedimiento de rendición de cobranzas.",
+      "clave": "Bolsines depositados.",
+      "documentos": [
+        "Bolsines",
+        "Recibos de cobranza"
+      ],
+      "riesgos": [
+        "No resguardar recaudación",
+        "Diferencias de fondos",
+        "No seguir procedimiento de buzón"
+      ],
+      "sistemas": [
+        "Buzón"
+      ],
+      "salidas": [
+        "Recaudación resguardada en buzón"
+      ]
+    },
+    {
+      "titulo": "Informar regreso de gira",
+      "responsable": "Asesor Comercial",
+      "texto": "El asesor informa al supervisor el regreso de gira, la entrega del vehículo y el depósito de bolsines por mail o WhatsApp.",
+      "controles": "Dejar constancia del cierre operativo de la gira.",
+      "clave": "Regreso informado.",
+      "documentos": [
+        "Mail o WhatsApp de regreso"
+      ],
+      "riesgos": [
+        "Supervisor sin visibilidad del cierre",
+        "No registrar entrega de vehículo o bolsines",
+        "Falta de trazabilidad final"
+      ],
+      "sistemas": [
+        "Correo electrónico",
+        "WhatsApp"
+      ],
+      "salidas": [
+        "Supervisor informado del cierre de primera etapa"
+      ]
+    }
+  ],
+  "excepciones": [
+    {
+      "caso": "Suspensión de gira por fuerza mayor",
+      "accion": "El asesor debe informar inmediatamente al supervisor por mail o WhatsApp, presentar documentación respaldatoria y devolver viáticos, recibos y material POP el día previsto de inicio.",
+      "responsable": "Asesor Comercial"
+    },
+    {
+      "caso": "Motivo de suspensión por enfermedad, familiar a cargo, problema del vehículo o determinación interna",
+      "accion": "Debe documentarse el motivo y comunicarlo obligatoriamente por email.",
+      "responsable": "Asesor Comercial"
+    },
+    {
+      "caso": "Accidente durante la gira",
+      "accion": "Llamar a autoridades locales, luego al servicio de emergencias si corresponde y después a cualquier supervisor disponible.",
+      "responsable": "Asesor Comercial"
+    },
+    {
+      "caso": "No se puede devolver el vehículo el mismo día de regreso",
+      "accion": "Debe existir autorización correspondiente para diferir la devolución.",
+      "responsable": "Asesor Comercial / Supervisor Comercial"
+    },
+    {
+      "caso": "Se requieren documentos para clientes durante la gira",
+      "accion": "El asesor debe solicitarlos al supervisor al menos el jueves previo, y el supervisor los gestiona con Administración.",
+      "responsable": "Asesor Comercial / Supervisor Comercial / Administración"
+    },
+    {
+      "caso": "Corresponde realizar cobranzas durante la gira",
+      "accion": "El asesor debe utilizar recibos oficiales y luego depositar bolsines o rendir según procedimiento aplicable.",
+      "responsable": "Asesor Comercial"
+    }
+  ]
+},{
+  "id": "lh-comercial-precios-administracion-precios",
+  "nombre": "Proceso de Administración de Precios",
+  "sistema": "Lista de precios / Importación masiva / Sistema comercial",
+  "bi": "Sin tablero BI asociado",
+  "original": "https://lopezhnossa.sharepoint.com/:w:/s/ALLPROCESOS/IQDoHbawnap_RZ0tgTRrkfVyAXDP1ZGYMYvm3x3KEdMXsgA?e=BQrZsd",
+  "interactivo": true,
+  "tipo": "workflow",
+  "objetivo": "Establecer los lineamientos y actividades necesarias para el ABM de precios de productos y servicios, asegurando coherencia con la estrategia comercial, la estructura de costos y los objetivos de rentabilidad.",
+  "responsables": [
+    "Analista de Costos y Precios",
+    "Gerente Comercial",
+    "Jefe de Negocios"
+  ],
+  "entradas": [
+    "Costos del producto",
+    "SKU dado de alta",
+    "Lista de precios",
+    "Estrategia comercial",
+    "Categoría del producto",
+    "Margen objetivo",
+    "Tipo de cliente",
+    "Descuentos y promociones"
+  ],
+  "salidas": [
+    "Base Price definido",
+    "Price Levels definidos",
+    "Listas de precios actualizadas",
+    "Precios finales construidos",
+    "Descuentos aplicados según estructura",
+    "Promociones o casos especiales parametrizados"
+  ],
+  "kpis": [
+    "Productos con Base Price definido luego del alta de SKU",
+    "Productos correctamente categorizados",
+    "Listas de precios actualizadas por compañía",
+    "Margen validado con Gerencia Comercial",
+    "Cantidad de actualizaciones masivas realizadas",
+    "Cantidad de actualizaciones por artículo",
+    "Descuentos aplicados según matriz de prioridad"
+  ],
+  "pasos": [
+    {
+      "titulo": "Verificar alta y categorización del SKU",
+      "responsable": "Analista de Costos y Precios",
+      "texto": "Una vez dado de alta el SKU, el analista controla que el producto esté correctamente categorizado antes de definir o actualizar su precio.",
+      "controles": "Validar alta del SKU y categoría del producto.",
+      "clave": "SKU correctamente categorizado.",
+      "documentos": [
+        "Alta de SKU",
+        "Categoría de producto"
+      ],
+      "riesgos": [
+        "Definir precios sobre productos mal categorizados",
+        "Aplicar descuentos o listas incorrectas",
+        "Errores en la estructura comercial"
+      ],
+      "sistemas": [
+        "Sistema comercial",
+        "Lista de precios"
+      ],
+      "salidas": [
+        "Producto validado para definición de precio"
+      ]
+    },
+    {
+      "titulo": "Definir Base Price",
+      "responsable": "Analista de Costos y Precios",
+      "texto": "El analista define y actualiza el Base Price a partir de costos, negocio, estrategia y lista de precios.",
+      "controles": "Verificar coherencia entre costo, estrategia comercial y precio objetivo.",
+      "clave": "Base Price calculado.",
+      "documentos": [
+        "Lista de precios",
+        "Estructura de costos",
+        "Precio objetivo"
+      ],
+      "riesgos": [
+        "Precio base no alineado a costos",
+        "Margen insuficiente",
+        "Desalineación con estrategia comercial"
+      ],
+      "sistemas": [
+        "Lista de precios",
+        "Sistema comercial"
+      ],
+      "salidas": [
+        "Base Price definido o actualizado"
+      ]
+    },
+    {
+      "titulo": "Validar margen comercial",
+      "responsable": "Analista de Costos y Precios / Gerente Comercial",
+      "texto": "El analista valida el margen resultante con el Gerente Comercial para asegurar rentabilidad y coherencia comercial.",
+      "controles": "Controlar margen, markup y precio objetivo.",
+      "clave": "Margen validado.",
+      "documentos": [
+        "Análisis de margen",
+        "Lista de precios"
+      ],
+      "riesgos": [
+        "Publicar precios sin validación",
+        "Definir precios no rentables",
+        "No contemplar objetivos comerciales"
+      ],
+      "sistemas": [
+        "Sistema comercial",
+        "Excel"
+      ],
+      "salidas": [
+        "Precio base aprobado"
+      ]
+    },
+    {
+      "titulo": "Definir Price Levels por tipo de cliente",
+      "responsable": "Analista de Costos y Precios",
+      "texto": "El analista define descuentos estándar por capa o tipo de cliente, considerando el negocio correspondiente.",
+      "controles": "Validar tipo de cliente, negocio y descuento estándar aplicable.",
+      "clave": "Price Level definido.",
+      "documentos": [
+        "Matriz de tipos de cliente",
+        "Estructura de descuentos"
+      ],
+      "riesgos": [
+        "Aplicar descuentos a clientes incorrectos",
+        "No diferenciar niveles comerciales",
+        "Duplicar condiciones comerciales"
+      ],
+      "sistemas": [
+        "Sistema comercial",
+        "Lista de precios"
+      ],
+      "salidas": [
+        "Price Levels configurados"
+      ]
+    },
+    {
+      "titulo": "Construir precios finales",
+      "responsable": "Analista de Costos y Precios",
+      "texto": "El analista construye los precios finales aplicando las capas de la estructura de precios y realizando la importación masiva de listas correspondientes a cada razón social.",
+      "controles": "Validar razón social, compañía, negocio y lista correspondiente.",
+      "clave": "Precio final por razón social.",
+      "documentos": [
+        "Listas de precios por compañía",
+        "Archivo de importación masiva"
+      ],
+      "riesgos": [
+        "Importar precios en razón social incorrecta",
+        "Errores masivos de precio",
+        "Listas desactualizadas"
+      ],
+      "sistemas": [
+        "Sistema comercial",
+        "Importación masiva"
+      ],
+      "salidas": [
+        "Listas de precios actualizadas"
+      ]
+    },
+    {
+      "titulo": "Administrar estructura de precios",
+      "responsable": "Analista de Costos y Precios",
+      "texto": "La estructura se administra en cuatro niveles: listas de precios por compañía, tipo de cliente por negocio, categoría de producto, y descuentos o promociones.",
+      "controles": "Respetar la jerarquía de capas y la matriz de prioridad definida.",
+      "clave": "Estructura de cuatro niveles.",
+      "documentos": [
+        "Matriz de prioridad",
+        "Estructura de precios"
+      ],
+      "riesgos": [
+        "Aplicar capas en orden incorrecto",
+        "Superponer descuentos indebidamente",
+        "Configurar precios sin trazabilidad"
+      ],
+      "sistemas": [
+        "Sistema comercial",
+        "Lista de precios"
+      ],
+      "salidas": [
+        "Estructura de precios administrada"
+      ]
+    },
+    {
+      "titulo": "Aplicar descuentos por volumen o monto",
+      "responsable": "Analista de Costos y Precios / Jefe de Negocios",
+      "texto": "Se aplican descuentos por volumen o por monto según la política definida y la matriz de prioridad.",
+      "controles": "Validar que el descuento corresponda al nivel, cliente, negocio y condición comercial.",
+      "clave": "Descuento aplicado según matriz.",
+      "documentos": [
+        "Matriz de prioridad",
+        "Política de descuentos"
+      ],
+      "riesgos": [
+        "Aplicar descuentos acumulados incorrectamente",
+        "Afectar margen",
+        "No respetar condiciones comerciales"
+      ],
+      "sistemas": [
+        "Sistema comercial"
+      ],
+      "salidas": [
+        "Descuentos correctamente parametrizados"
+      ]
+    },
+    {
+      "titulo": "Actualizar precios de forma masiva",
+      "responsable": "Analista de Costos y Precios",
+      "texto": "Cuando corresponde, el analista realiza actualizaciones masivas de precios mediante importación de listas.",
+      "controles": "Controlar archivo de importación, compañía, razón social y precios actualizados antes de impactar.",
+      "clave": "Actualización masiva controlada.",
+      "documentos": [
+        "Archivo de actualización masiva",
+        "Lista de precios actualizada"
+      ],
+      "riesgos": [
+        "Impactar precios incorrectos masivamente",
+        "No respaldar lista anterior",
+        "Errores de formato en importación"
+      ],
+      "sistemas": [
+        "Sistema comercial",
+        "Importación masiva"
+      ],
+      "salidas": [
+        "Precios actualizados masivamente"
+      ]
+    },
+    {
+      "titulo": "Actualizar precios por artículo",
+      "responsable": "Analista de Costos y Precios",
+      "texto": "Cuando el cambio afecta artículos puntuales, se realiza una actualización individual por artículo.",
+      "controles": "Validar SKU, categoría, Base Price y lista afectada.",
+      "clave": "Actualización por artículo.",
+      "documentos": [
+        "SKU",
+        "Lista de precios",
+        "Análisis de costo"
+      ],
+      "riesgos": [
+        "Actualizar artículo equivocado",
+        "No replicar el cambio en listas necesarias",
+        "Dejar precios inconsistentes"
+      ],
+      "sistemas": [
+        "Sistema comercial",
+        "Lista de precios"
+      ],
+      "salidas": [
+        "Artículo actualizado en precio"
+      ]
+    },
+    {
+      "titulo": "Gestionar casos especiales",
+      "responsable": "Analista de Costos y Precios / Gerente Comercial / Jefe de Negocios",
+      "texto": "Se analizan casos especiales como promociones, clientes estratégicos u operaciones del exterior, considerando rentabilidad, competitividad y estrategia.",
+      "controles": "Validar autorización comercial y coherencia con margen objetivo.",
+      "clave": "Caso especial autorizado.",
+      "documentos": [
+        "Solicitud de caso especial",
+        "Análisis de rentabilidad",
+        "Autorización comercial"
+      ],
+      "riesgos": [
+        "Otorgar condiciones especiales sin aprobación",
+        "Afectar rentabilidad",
+        "No documentar la excepción"
+      ],
+      "sistemas": [
+        "Sistema comercial",
+        "Correo electrónico"
+      ],
+      "salidas": [
+        "Promoción o condición especial configurada"
+      ]
+    }
+  ],
+  "excepciones": [
+    {
+      "caso": "SKU no está dado de alta",
+      "accion": "No se define Base Price hasta que el SKU esté creado y correctamente categorizado.",
+      "responsable": "Analista de Costos y Precios"
+    },
+    {
+      "caso": "Producto mal categorizado",
+      "accion": "Debe corregirse la categoría antes de construir o importar precios finales.",
+      "responsable": "Analista de Costos y Precios"
+    },
+    {
+      "caso": "Margen no cumple objetivo",
+      "accion": "El Analista de Costos y Precios debe validar el caso con el Gerente Comercial antes de avanzar.",
+      "responsable": "Analista de Costos y Precios / Gerente Comercial"
+    },
+    {
+      "caso": "Promoción o cliente estratégico",
+      "accion": "Debe analizarse como caso especial y contar con autorización comercial.",
+      "responsable": "Gerente Comercial / Jefe de Negocios"
+    },
+    {
+      "caso": "Operación del exterior",
+      "accion": "Debe tratarse como caso especial considerando rentabilidad, competitividad y estrategia.",
+      "responsable": "Analista de Costos y Precios / Gerente Comercial"
+    },
+    {
+      "caso": "Descuentos acumulados con cupones",
+      "accion": "Debe respetarse la matriz de prioridad y validar acumulación con listas de precios.",
+      "responsable": "Analista de Costos y Precios"
+    }
+  ]
+},{
+  "id": "lh-abastecimiento-planificacion-prevision-demanda",
+  "nombre": "Previsión de la Demanda",
+  "sistema": "MRP / Forecast / Plan de Ventas / Plan de Producción / Plan de Compras",
+  "bi": "Sin tablero BI asociado",
+  "original": "https://lopezhnossa.sharepoint.com/:w:/s/ALLPROCESOS/IQD80ekXwiZpQLSEuvMj44rHAeujU-CIhbbql3LczQ7zmGg?e=z2CSrL",
+  "interactivo": true,
+  "tipo": "workflow",
+  "objetivo": "Establecer la metodología para proyectar la demanda del mercado con la mayor exactitud posible, equilibrando niveles de inventario, optimizando el flujo de caja y garantizando disponibilidad de producto mediante ciclos de revisión sistemáticos.",
+  "responsables": [
+    "Gerente de Abastecimiento",
+    "Líder de Planificación",
+    "Gerentes Comerciales",
+    "Gerente de Producto",
+    "Gerente de Compras",
+    "Gerencia General",
+    "Compras"
+  ],
+  "entradas": [
+    "Ventas históricas",
+    "Tendencias futuras",
+    "Pedidos pendientes",
+    "Consumos históricos",
+    "Forecast",
+    "Quiebres de stock",
+    "Rotación",
+    "Nuevos productos",
+    "Cambios en listas de materiales",
+    "Modos de producción OEM, CKD o SKD",
+    "Acciones comerciales futuras",
+    "Desvíos de proveedores"
+  ],
+  "salidas": [
+    "Forecast final aprobado",
+    "MRP ajustado",
+    "Plan de ventas valorizado",
+    "Plan de producción valorizado",
+    "Plan de compras valorizado",
+    "Solicitudes de compra emitidas",
+    "Órdenes de compra enviadas a proveedores"
+  ],
+  "kpis": [
+    "Forecast aprobado antes de correr MRP",
+    "MRP ejecutado el último día del mes",
+    "Revisión mensual realizada a mediados de mes",
+    "Revisión trimestral de condiciones generales realizada",
+    "Cantidad de distorsiones detectadas en MRP",
+    "Cantidad de órdenes sugeridas cerradas o canceladas",
+    "Nivel de quiebres de stock",
+    "Nivel de sobrestock",
+    "Desvíos significativos de previsión"
+  ],
+  "pasos": [
+    {
+      "titulo": "Planificar demanda de productos existentes",
+      "responsable": "Líder de Planificación / Gerente de Abastecimiento",
+      "texto": "El día 15 de cada mes se presentan planes valorizados basados en la tendencia actual para productos existentes.",
+      "controles": "Validar que la información considere ventas históricas, consumos, pedidos pendientes, rotación y quiebres.",
+      "clave": "Planes valorizados al día 15.",
+      "documentos": [
+        "Plan valorizado",
+        "Forecast",
+        "Histórico de ventas"
+      ],
+      "riesgos": [
+        "Proyectar con información incompleta",
+        "Generar sobrestock",
+        "Provocar quiebres por subestimación de demanda"
+      ],
+      "sistemas": [
+        "MRP",
+        "Forecast"
+      ],
+      "salidas": [
+        "Demanda inicial proyectada para productos existentes"
+      ]
+    },
+    {
+      "titulo": "Planificar demanda de productos nuevos",
+      "responsable": "Gerente de Producto / Líder de Planificación",
+      "texto": "Planificación y Producto definen la curva de lanzamiento inicial para productos nuevos, basada en el potencial del mercado.",
+      "controles": "Validar potencial de mercado, tendencias, modo de producción y fecha de incorporación.",
+      "clave": "Curva inicial de lanzamiento.",
+      "documentos": [
+        "Plan de lanzamiento",
+        "Forecast de producto nuevo"
+      ],
+      "riesgos": [
+        "Subestimar demanda inicial",
+        "Sobrecomprar productos nuevos",
+        "No cargar previsión en MRP"
+      ],
+      "sistemas": [
+        "MRP",
+        "Forecast"
+      ],
+      "salidas": [
+        "Previsión inicial de productos nuevos cargada"
+      ]
+    },
+    {
+      "titulo": "Realizar revisión trimestral de condiciones generales",
+      "responsable": "Gerente de Abastecimiento / Líder de Planificación / Gerentes Comerciales / Gerente de Producto",
+      "texto": "Se realiza una revisión trimestral para analizar cambios estructurales que afectan la demanda a mediano plazo, incluyendo modos de compra, acuerdos con proveedores, tendencias, listas de materiales, acciones comerciales, desvíos de proveedores y desarrollo de nuevos proveedores.",
+      "controles": "Revisar impacto en OEM, CKD, SKD, tendencias de mercado, cambios de BOM y necesidades de repuestos por categoría.",
+      "clave": "Revisión estructural trimestral.",
+      "documentos": [
+        "Acta de revisión trimestral",
+        "Cambios de listas de materiales",
+        "Reporte de tendencias",
+        "Información de proveedores"
+      ],
+      "riesgos": [
+        "No anticipar cambios estructurales",
+        "Comprar bajo supuestos obsoletos",
+        "No contemplar repuestos para reclamos"
+      ],
+      "sistemas": [
+        "MRP",
+        "Forecast"
+      ],
+      "salidas": [
+        "Ajustes estructurales definidos para la previsión"
+      ]
+    },
+    {
+      "titulo": "Realizar revisión mensual de demanda",
+      "responsable": "Gerente de Abastecimiento / Líder de Planificación / Gerentes Comerciales / Gerente de Producto",
+      "texto": "A mediados de mes se realiza la revisión mensual para emitir pedidos de compra firmes al inicio del mes siguiente, analizando quiebres, rotación e incorporaciones inmediatas.",
+      "controles": "Validar quiebres de stock, rotación e incorporación de lanzamientos inmediatos.",
+      "clave": "Revisión mensual operativa.",
+      "documentos": [
+        "Reporte de quiebres",
+        "Reporte de rotación",
+        "Listado de lanzamientos inmediatos"
+      ],
+      "riesgos": [
+        "No comprar a tiempo",
+        "No corregir quiebres",
+        "No incorporar lanzamientos inmediatos"
+      ],
+      "sistemas": [
+        "MRP",
+        "Forecast"
+      ],
+      "salidas": [
+        "Inputs operativos consensuados para Forecast"
+      ]
+    },
+    {
+      "titulo": "Consensuar cantidades por artículo",
+      "responsable": "Área Comercial / Planificación / Producto",
+      "texto": "En las reuniones de Previsión de la Demanda se consensuan y definen las cantidades de cada artículo entre Comercial, Planificación y Producto.",
+      "controles": "Contrastar ventas históricas, tendencias futuras, lanzamientos, rotación y necesidades comerciales.",
+      "clave": "Cantidades consensuadas por artículo.",
+      "documentos": [
+        "Forecast preliminar",
+        "Plan de ventas",
+        "Plan de producto"
+      ],
+      "riesgos": [
+        "Desalineación entre áreas",
+        "Forecast poco realista",
+        "No reflejar acciones comerciales futuras"
+      ],
+      "sistemas": [
+        "Forecast",
+        "MRP"
+      ],
+      "salidas": [
+        "Forecast preliminar consensuado"
+      ]
+    },
+    {
+      "titulo": "Aprobar Forecast final",
+      "responsable": "Gerencia General",
+      "texto": "Gerencia General aprueba el Forecast final luego de la revisión y consenso entre las áreas involucradas.",
+      "controles": "Verificar que el Forecast final contemple disponibilidad, caja, inventario y prioridades comerciales.",
+      "clave": "Forecast final aprobado.",
+      "documentos": [
+        "Forecast final",
+        "Aprobación de Gerencia General"
+      ],
+      "riesgos": [
+        "Ejecutar MRP sin aprobación",
+        "Comprar sin validación final",
+        "Desalinear abastecimiento con estrategia"
+      ],
+      "sistemas": [
+        "Forecast",
+        "MRP"
+      ],
+      "salidas": [
+        "Forecast aprobado para ejecución"
+      ]
+    },
+    {
+      "titulo": "Ejecutar MRP mensual",
+      "responsable": "Líder de Planificación",
+      "texto": "El último día del mes se corre el MRP en el sistema utilizando el Forecast aprobado.",
+      "controles": "Confirmar que el Forecast aprobado esté cargado antes de ejecutar el MRP.",
+      "clave": "MRP ejecutado el último día del mes.",
+      "documentos": [
+        "Forecast aprobado",
+        "Resultado MRP"
+      ],
+      "riesgos": [
+        "Correr MRP con Forecast desactualizado",
+        "Generar sugerencias de compra incorrectas",
+        "Omitir necesidades reales"
+      ],
+      "sistemas": [
+        "MRP"
+      ],
+      "salidas": [
+        "Sugerencias de compra generadas"
+      ]
+    },
+    {
+      "titulo": "Revisar sugerencias del sistema",
+      "responsable": "Líder de Planificación / Gerente de Abastecimiento",
+      "texto": "El Líder de Planificación y el Gerente de Abastecimiento revisan las sugerencias generadas por el MRP.",
+      "controles": "Identificar distorsiones y validar coherencia de las sugerencias contra el Forecast y las necesidades reales.",
+      "clave": "Sugerencias MRP revisadas.",
+      "documentos": [
+        "Sugerencias MRP",
+        "Análisis de necesidades"
+      ],
+      "riesgos": [
+        "Aceptar sugerencias distorsionadas",
+        "Generar compras innecesarias",
+        "No cubrir demanda crítica"
+      ],
+      "sistemas": [
+        "MRP"
+      ],
+      "salidas": [
+        "Sugerencias validadas o marcadas para ajuste"
+      ]
+    },
+    {
+      "titulo": "Ajustar parámetros del MRP",
+      "responsable": "Líder de Planificación",
+      "texto": "Si existen distorsiones, se ajustan parámetros como lead times y stock de seguridad, y se vuelve a correr el MRP hasta lograr una sugerencia de compra óptima.",
+      "controles": "Validar que los cambios corrijan la distorsión sin generar sobrestock o quiebres.",
+      "clave": "Parámetros MRP ajustados.",
+      "documentos": [
+        "Parámetros MRP",
+        "Lead times",
+        "Stock de seguridad"
+      ],
+      "riesgos": [
+        "Ajustar parámetros sin criterio",
+        "Sobredimensionar stock de seguridad",
+        "No corregir desvíos"
+      ],
+      "sistemas": [
+        "MRP"
+      ],
+      "salidas": [
+        "Sugerencia de compra optimizada"
+      ]
+    },
+    {
+      "titulo": "Cerrar o cancelar órdenes sugeridas no ejecutables",
+      "responsable": "Líder de Planificación",
+      "texto": "Antes de finalizar el proceso, se cierran o cancelan todas las órdenes de compra sugeridas que no serán ejecutadas para evitar acumulación de borradores.",
+      "controles": "Controlar que no queden borradores que distorsionen necesidades reales del siguiente ciclo.",
+      "clave": "Órdenes sugeridas depuradas.",
+      "documentos": [
+        "Órdenes sugeridas",
+        "Registro de cancelaciones"
+      ],
+      "riesgos": [
+        "Acumulación de borradores",
+        "Distorsión de necesidades de abastecimiento",
+        "Compras duplicadas"
+      ],
+      "sistemas": [
+        "MRP",
+        "Sistema de compras"
+      ],
+      "salidas": [
+        "MRP depurado para cierre del ciclo"
+      ]
+    },
+    {
+      "titulo": "Presentar planes valorizados",
+      "responsable": "Líder de Planificación / Gerente de Abastecimiento",
+      "texto": "Al finalizar la ejecución del MRP, se presentan los planes valorizados a las áreas correspondientes para validación.",
+      "controles": "Presentar Plan de Ventas, Plan de Producción y Plan de Compras.",
+      "clave": "Planes valorizados presentados.",
+      "documentos": [
+        "Plan de Ventas",
+        "Plan de Producción",
+        "Plan de Compras"
+      ],
+      "riesgos": [
+        "No validar impactos por área",
+        "Generar compras sin visión financiera",
+        "Desalinear producción y ventas"
+      ],
+      "sistemas": [
+        "MRP",
+        "Forecast"
+      ],
+      "salidas": [
+        "Planes validados para pedido de compra"
+      ]
+    },
+    {
+      "titulo": "Emitir solicitudes de compra",
+      "responsable": "Líder de Planificación",
+      "texto": "El Líder de Planificación emite las solicitudes de compra en función de la previsión acordada y las sugerencias validadas.",
+      "controles": "Asegurar que las solicitudes cumplan estrictamente con los criterios de previsión acordados.",
+      "clave": "Solicitudes de compra emitidas.",
+      "documentos": [
+        "Solicitudes de compra",
+        "Forecast aprobado"
+      ],
+      "riesgos": [
+        "Emitir solicitudes fuera de previsión",
+        "Comprar cantidades incorrectas",
+        "No respetar acuerdos de revisión"
+      ],
+      "sistemas": [
+        "MRP",
+        "Sistema de compras"
+      ],
+      "salidas": [
+        "Solicitudes de compra listas para aprobación"
+      ]
+    },
+    {
+      "titulo": "Aprobar pedido de compra",
+      "responsable": "Gerente de Compras / Gerencia General",
+      "texto": "El Pedido de Compra es validado por el Gerente de Compras en conjunto con Gerencia General.",
+      "controles": "Validar cantidades, valorización, necesidad, proveedor y alineación con Forecast.",
+      "clave": "Pedido de compra aprobado.",
+      "documentos": [
+        "Pedido de compra",
+        "Aprobación de Gerente de Compras",
+        "Aprobación de Gerencia General"
+      ],
+      "riesgos": [
+        "Comprar sin aprobación",
+        "Aprobar compras no alineadas al Forecast",
+        "Comprometer flujo de caja"
+      ],
+      "sistemas": [
+        "Sistema de compras",
+        "MRP"
+      ],
+      "salidas": [
+        "Pedido de compra autorizado"
+      ]
+    },
+    {
+      "titulo": "Enviar órdenes de compra a proveedores",
+      "responsable": "Compras",
+      "texto": "Con el pedido validado, el área de Compras emite y envía las órdenes de compra a los proveedores.",
+      "controles": "Validar proveedor, condiciones, cantidades y fechas antes del envío.",
+      "clave": "OC enviada al proveedor.",
+      "documentos": [
+        "Orden de compra",
+        "Pedido aprobado"
+      ],
+      "riesgos": [
+        "Enviar OC con datos incorrectos",
+        "No respetar condiciones aprobadas",
+        "Demorar abastecimiento"
+      ],
+      "sistemas": [
+        "Sistema de compras",
+        "Correo electrónico"
+      ],
+      "salidas": [
+        "Compra ejecutada con proveedor"
+      ]
+    },
+    {
+      "titulo": "Solicitar revisión extraordinaria",
+      "responsable": "Gerente de Producto / Gerente de Abastecimiento / Líder de Planificación",
+      "texto": "Se pueden solicitar revisiones extraordinarias cuando la confiabilidad de la previsión sea baja y resulte necesario ajustar por categoría o subcategoría antes del cierre mensual.",
+      "controles": "Justificar la baja confiabilidad y el impacto del ajuste requerido.",
+      "clave": "Revisión extraordinaria justificada.",
+      "documentos": [
+        "Solicitud de revisión extraordinaria",
+        "Análisis de desvío",
+        "Categoría o subcategoría afectada"
+      ],
+      "riesgos": [
+        "Modificar Forecast sin fundamento",
+        "No corregir desvíos antes del cierre",
+        "Afectar compras ya planificadas"
+      ],
+      "sistemas": [
+        "Forecast",
+        "MRP"
+      ],
+      "salidas": [
+        "Forecast ajustado extraordinariamente si corresponde"
+      ]
+    }
+  ],
+  "excepciones": [
+    {
+      "caso": "Forecast con baja confiabilidad",
+      "accion": "Solicitar revisión extraordinaria por categoría o subcategoría antes del cierre del ciclo mensual.",
+      "responsable": "Gerente de Producto / Gerente de Abastecimiento / Líder de Planificación"
+    },
+    {
+      "caso": "Distorsiones significativas en sugerencias MRP",
+      "accion": "Ajustar parámetros como lead times y stock de seguridad, y volver a correr el MRP hasta obtener una sugerencia óptima.",
+      "responsable": "Líder de Planificación / Gerente de Abastecimiento"
+    },
+    {
+      "caso": "Órdenes sugeridas no serán ejecutadas",
+      "accion": "Cerrar o cancelar las órdenes sugeridas antes de finalizar el ciclo para evitar acumulación de borradores.",
+      "responsable": "Líder de Planificación"
+    },
+    {
+      "caso": "Producto nuevo sin curva de lanzamiento",
+      "accion": "Producto y Planificación deben definir la curva inicial basada en potencial de mercado antes de cargar previsión en MRP.",
+      "responsable": "Gerente de Producto / Líder de Planificación"
+    },
+    {
+      "caso": "Cambios estructurales de mercado o proveedores",
+      "accion": "Tratarlos en revisión trimestral de condiciones generales y ajustar la previsión si corresponde.",
+      "responsable": "Gerente de Abastecimiento / Líder de Planificación / Gerentes Comerciales / Gerente de Producto"
+    }
+  ]
+},{
             "id": "lh-comercial-estrategica",
             "nombre": "Carpeta Gestión Estratégica Comercial",
             "sistema": "Comercial / Estrategia",
