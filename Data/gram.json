@@ -1,0 +1,167 @@
+[
+  {
+    "empresa": "GRAM",
+    "area": "Abastecimiento",
+    "path": "Abastecimiento",
+    "procesos": [
+      {
+        "id": "gram-abastecimiento-general",
+        "nombre": "Abastecimiento",
+        "subarea": "General",
+        "sistema": "E-commerce / Abastecimiento",
+        "bi": "Abastecimiento → Análisis de Existencia / Ventas → D2C",
+        "original": "https://lopezhnossa.sharepoint.com/sites/ALLPROCESOS/_layouts/15/Doc.aspx?sourcedoc=%7B14E91E6F-EEA8-4DEE-A251-766618738FED%7D&file=Abastecimiento.docx&action=default&mobileredirect=true",
+        "interactivo": false,
+        "pasos": []
+      },
+      {
+        "id": "gram-compra-gram-a-lh",
+        "nombre": "Compra GRAM a LH",
+        "subarea": "Compras",
+        "sistema": "E-commerce / Compras / LH",
+        "bi": "Abastecimiento → Análisis de Existencia",
+        "original": "https://lopezhnossa.sharepoint.com/sites/ALLPROCESOS/_layouts/15/Doc.aspx?sourcedoc=%7BB3DAB181-989E-46D4-9A3C-FB3AE8684AA1%7D&file=COMPRA%20GRAM%20a%20LH.xlsx&action=default&mobileredirect=true",
+        "interactivo": false,
+        "pasos": []
+      },
+      {
+        "id": "gram-compra-simplificada-lh",
+        "nombre": "Procedimiento compra simplificada GRAM a LH",
+        "subarea": "Compras",
+        "sistema": "E-commerce / Compras / LH",
+        "bi": "Abastecimiento → Análisis de Existencia",
+        "original": "https://lopezhnossa.sharepoint.com/sites/ALLPROCESOS/_layouts/15/Doc.aspx?sourcedoc=%7BF22A6A07-7C26-4DEC-BFD3-A0212CE09B66%7D&file=Procedimiento%20compra%20simplificada%20GRAM%20a%20LH.docx&action=default&mobileredirect=true",
+        "interactivo": false,
+        "pasos": []
+      },
+      {
+        "id": "gram-wms-logistica-entrada",
+        "nombre": "Proceso WMS GRAM - Logística de Entrada",
+        "subarea": "Logísticos",
+        "sistema": "WMS / Logística de entrada",
+        "bi": "Abastecimiento → Recepción / Análisis de Existencia",
+        "original": "https://lopezhnossa.sharepoint.com/sites/ALLPROCESOS/_layouts/15/Doc.aspx?sourcedoc=%7B9AD52834-C773-4358-AFD6-F435E753D53B%7D&file=06.07.24%20Proceso%20WMS%20GRAM_%20Log%C3%ADstica%20de%20Entrada.docx&action=default&mobileredirect=true",
+        "interactivo": false,
+        "pasos": []
+      },
+      {
+        "id": "gram-wms-logistica-salida",
+        "nombre": "Proceso WMS GRAM - Logística de Salida",
+        "subarea": "Logísticos",
+        "sistema": "WMS / Logística de salida",
+        "bi": "Abastecimiento → Salida de Pedidos / Ventas D2C",
+        "original": "https://lopezhnossa.sharepoint.com/sites/ALLPROCESOS/_layouts/15/Doc.aspx?sourcedoc=%7BC108A8D1-A076-4A32-AF98-B6932DE24330%7D&file=06.07.24%20Proceso%20WMS%20GRAM_%20Log%C3%ADstica%20de%20Salida.docx&action=default&mobileredirect=true",
+        "interactivo": false,
+        "pasos": []
+      }
+    ]
+  },
+  {
+    "empresa": "GRAM",
+    "area": "Administrativos",
+    "path": "Administrativos",
+    "procesos": [
+      {
+        "id": "gram-facturacion-canal-ecommerce",
+        "nombre": "Facturación canal ecommerce",
+        "subarea": "Facturación",
+        "sistema": "E-commerce / Facturación",
+        "bi": "Gerencia Contable → Email Status / Ventas → D2C",
+        "original": "https://lopezhnossa.sharepoint.com/sites/ALLPROCESOS/_layouts/15/Doc.aspx?sourcedoc=%7B7B33F528-D5F2-488F-A149-8D3252208362%7D&file=Facturaci%C3%B3n%20canal%20ecommerce.docx&action=default&mobileredirect=true",
+        "interactivo": false,
+        "pasos": []
+      }
+    ]
+  },
+  {
+    "empresa": "GRAM",
+    "area": "Comerciales",
+    "path": "Comerciales",
+    "procesos": [
+      {
+        "id": "gram-venta-e2e",
+        "nombre": "Proceso GRAM - Venta E2E",
+        "subarea": "Venta online",
+        "sistema": "E-commerce / Venta E2E",
+        "bi": "Ventas → Indicadores Comerciales → D2C",
+        "original": "https://lopezhnossa.sharepoint.com/sites/ALLPROCESOS/_layouts/15/Doc.aspx?sourcedoc=%7BC4E47C1F-515B-4A9F-A51F-78532F317767%7D&file=5.8%20Proceso%20GRAM_Venta%20E2E.docx&action=default&mobileredirect=true",
+        "interactivo": false,
+        "pasos": []
+      },
+      {
+        "id": "gram-acciones-comerciales",
+        "nombre": "Acciones comerciales",
+        "subarea": "Acciones comerciales",
+        "sistema": "E-commerce / Comercial",
+        "bi": "Ventas → Indicadores Comerciales → D2C",
+        "original": "https://lopezhnossa.sharepoint.com/sites/ALLPROCESOS/_layouts/15/Doc.aspx?sourcedoc=%7B1E880F93-05F8-4F35-BC4E-2C81A321B4B4%7D&file=Acciones%20comerciales.docx&action=default&mobileredirect=true",
+        "interactivo": false,
+        "pasos": []
+      },
+      {
+        "id": "gram-gestion-sitios-web",
+        "nombre": "Gestión de Sitios Web",
+        "subarea": "Sitios web",
+        "sistema": "E-commerce / Sitio web",
+        "bi": "Ventas → D2C / Marketing digital",
+        "original": "https://lopezhnossa.sharepoint.com/sites/ALLPROCESOS/_layouts/15/Doc.aspx?sourcedoc=%7B8D7A3627-F06A-4BF7-8388-B6EB06758E42%7D&file=Gesti%C3%B3n%20de%20Sitios%20Web.docx&action=default&mobileredirect=true",
+        "interactivo": false,
+        "pasos": []
+      },
+      {
+        "id": "gram-politica-descuento-empleados-comercial",
+        "nombre": "Proceso y Condiciones Política Descuento Empleados",
+        "subarea": "Descuento empleados",
+        "sistema": "E-commerce / Comercial",
+        "bi": "Ventas → D2C",
+        "original": "https://lopezhnossa.sharepoint.com/sites/ALLPROCESOS/_layouts/15/Doc.aspx?sourcedoc=%7BAAD8261C-79F4-4ACD-9656-5191B1EEC3C7%7D&file=06.08%20Proceso%20y%20Condiciones%20Pol%C3%ADtica%20Descuento%20Empleados.docx&action=default&mobileredirect=true",
+        "interactivo": false,
+        "pasos": []
+      }
+    ]
+  },
+  {
+    "empresa": "GRAM",
+    "area": "Descuento empleados",
+    "path": "Descuento empleados",
+    "procesos": [
+      {
+        "id": "gram-descuento-empleados-1812",
+        "nombre": "Proceso y Condiciones Política Descuento Empleados 1812",
+        "subarea": "General",
+        "sistema": "E-commerce / Descuento empleados",
+        "bi": "Ventas → D2C",
+        "original": "https://lopezhnossa.sharepoint.com/sites/ALLPROCESOS/_layouts/15/Doc.aspx?sourcedoc=%7BA4D20456-ED13-4435-9C9D-8F55189396DF%7D&file=06.8%20Proceso%20y%20Condiciones%20Pol%C3%ADtica%20Descuento%20Empleados%201812.docx&action=default&mobileredirect=true",
+        "interactivo": false,
+        "pasos": []
+      }
+    ]
+  },
+  {
+    "empresa": "GRAM",
+    "area": "Observaciones",
+    "path": "Observaciones",
+    "procesos": [
+      {
+        "id": "gram-borrador-anotaciones-procesos",
+        "nombre": "Borrador Anotaciones - Procesos GRAM",
+        "subarea": "Observaciones",
+        "sistema": "Documentación interna",
+        "bi": "Sin tablero BI asociado",
+        "original": "https://lopezhnossa.sharepoint.com/sites/ALLPROCESOS/_layouts/15/Doc.aspx?sourcedoc=%7BA9B112F5-1CC6-4E11-AF1E-86DF64BB2629%7D&file=Borrador%20Anotaciones%20_%20Procesos%20GRAM.docx&action=default&mobileredirect=true",
+        "interactivo": false,
+        "pasos": []
+      },
+      {
+        "id": "gram-puntos-dolor",
+        "nombre": "Puntos de dolor GRAM",
+        "subarea": "Observaciones",
+        "sistema": "Documentación interna",
+        "bi": "Sin tablero BI asociado",
+        "original": "https://lopezhnossa.sharepoint.com/sites/ALLPROCESOS/_layouts/15/Doc.aspx?sourcedoc=%7B385678DB-6E8A-41DC-A745-5A16924AEAE4%7D&file=Puntos%20de%20dolor%20GRAM.docx&action=default&mobileredirect=true",
+        "interactivo": false,
+        "pasos": []
+      }
+    ]
+  }
+]

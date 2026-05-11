@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Banco de Procesos AS IS</title>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<div class="app">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+
+    <div class="brand">
+
+      <div class="logo-wrap">
+
+        <img
+          src="assets/assets/logos/lh.png"
+          class="logo-img"
+          alt="Logo LH"
+        >
+
+      </div>
+
+      <div>
+        <strong>Grupo López Hnos.</strong><br>
+        <small>Banco de Procesos</small>
+      </div>
+
+    </div>
+
+    <h4>Empresas</h4>
+
+    <button onclick="setCompany('TODAS')">
+      🌎 Todas
+    </button>
+
+    <button onclick="setCompany('LH')">
+      🚲 LH
+    </button>
+
+    <button onclick="setCompany('GRAM')">
+      🛒 GRAM
+    </button>
+
+    <button onclick="setCompany('RODAMAX')">
+      🇵🇾 Rodamax
+    </button>
+
+    <h4>Áreas</h4>
+
+    <div id="areaTree" class="area-tree"></div>
+
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- HERO -->
+    <section class="hero">
+
+      <h1>Banco de Procesos AS IS</h1>
+
+      <p>
+        Portal interactivo para consultar procesos,
+        documentación original, responsables,
+        controles y Power BI relacionado.
+      </p>
+
+      <div class="searchbar">
+
+        <input
+          id="search"
+          placeholder="Buscar proceso..."
+          onkeyup="render()"
+        >
+
+        <button onclick="render()">
+          Buscar
+        </button>
+
+      </div>
+
+    </section>
+
+    <!-- STATS -->
+    <section class="stats">
+
+      <div class="stat">
+        <b id="statProcesses">0</b>
+        Procesos
+      </div>
+
+      <div class="stat">
+        <b id="statInteractive">0</b>
+        Interactivos
+      </div>
+
+      <div class="stat">
+        <b id="statCompany">Todas</b>
+        Empresa activa
+      </div>
+
+      <div class="stat">
+        <b id="statArea">Todas</b>
+        Área activa
+      </div>
+
+    </section>
+
+    <!-- TITLE -->
+    <h2 class="section-title" id="sectionTitle">
+      Procesos disponibles
+    </h2>
+
+    <!-- PROCESS GRID -->
+    <div id="processList" class="grid"></div>
+
+  </main>
+
+</div>
+
+<!-- MODAL -->
+<div class="modal" id="modal">
+
+  <div class="modal-box">
+
+    <button
+      class="close"
+      onclick="closeModal()"
+    >
+      Cerrar
+    </button>
+
+    <h2 id="modalTitle"></h2>
+
+    <div class="flow">
+
+      <!-- STEPS -->
+      <div id="steps"></div>
+
+      <!-- DETAIL -->
+      <div class="detail" id="detail"></div>
+
+      <!-- RESOURCES -->
+      <div>
+
+        <div class="resource">
+
+          <strong>
+            Documento original
+          </strong>
+
+          <p>
+            Acceso al documento oficial.
+          </p>
+
+          <a
+            id="docLink"
+            class="doc"
+            target="_blank"
+          >
+            📄 Abrir original
+          </a>
+
+        </div>
+
+        <div class="resource">
+
+          <strong>
+            Power BI relacionado
+          </strong>
+
+          <p id="biText"></p>
+
+        </div>
+
+        <div class="resource">
+
+          <strong>
+            Sistemas
+          </strong>
+
+          <p id="systemText"></p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<script src="app.js"></script>
+
+</body>
+</html>

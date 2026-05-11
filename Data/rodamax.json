@@ -1,0 +1,19 @@
+[
+  {
+    "empresa": "RODAMAX",
+    "area": "Comercial y Logística",
+    "path": "Procesos Rodamax",
+    "procesos": [
+      {
+        "id": "rodamax-venta-salida",
+        "nombre": "Proceso RODAMAX - Venta y Salida",
+        "subarea": "Venta y logística",
+        "sistema": "RODAMAX / Comercial / Logística",
+        "bi": "Ventas → Indicadores Comerciales / Logística",
+        "original": "https://lopezhnossa.sharepoint.com/sites/ALLPROCESOS/_layouts/15/Doc.aspx?sourcedoc=%7BCE232A6B-FF1C-4C19-B7FA-EE6EA689B0C0%7D&file=12.8%20Proceso%20RODAMAX%20_%20Venta%20y%20Salida.docx&action=default&mobileredirect=true",
+        "interactivo": false,
+        "pasos": []
+      }
+    ]
+  }
+]
