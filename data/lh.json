@@ -6903,6 +6903,340 @@
             ],
             "pasos": [
               {
+  "id": "lh-comercial-ventas-preventa-entrega-diferida-dropshipping",
+  "nombre": "Preventa con Entrega Diferida y Dropshipping",
+  "sistema": "Odoo / Compras / Facturación / Logística / Posventa",
+  "bi": "Sin tablero BI asociado",
+  "original": "https://lopezhnossa.sharepoint.com/:w:/s/ALLPROCESOS/IQA7Dgn4Ta37RL1JMhnf05DSAUYSd8l2LBelcb2dfA8g_bc?e=W0cbnK",
+  "interactivo": true,
+  "tipo": "workflow",
+  "objetivo": "Gestionar preventas con entrega diferida o entrega directa del proveedor al cliente, asegurando correcta facturación, trazabilidad comercial, respaldo documental y control de riesgos logísticos.",
+  "responsables": [
+    "Comercial",
+    "Compras",
+    "Área Contable",
+    "Logística",
+    "Proveedor",
+    "Posventa"
+  ],
+  "entradas": [
+    "Pedido del cliente",
+    "Presupuesto aceptado",
+    "Compromiso del cliente",
+    "Fecha estimada de entrega",
+    "Condiciones comerciales",
+    "Orden de compra al proveedor",
+    "Comprobante de entrega"
+  ],
+  "salidas": [
+    "Preventa registrada",
+    "Orden de compra emitida al proveedor",
+    "Factura de anticipo o factura final emitida",
+    "Entrega directa confirmada",
+    "Operación cerrada",
+    "Reclamos gestionados si corresponde"
+  ],
+  "kpis": [
+    "Cantidad de preventas registradas con entrega directa",
+    "Cantidad de entregas confirmadas por proveedor",
+    "Cantidad de operaciones con remito o comprobante de entrega",
+    "Cantidad de reclamos posventa",
+    "Cantidad de facturas emitidas con anticipo",
+    "Tiempo entre confirmación de preventa y entrega efectiva"
+  ],
+  "pasos": [
+    {
+      "titulo": "Registrar preventa",
+      "responsable": "Comercial",
+      "texto": "Se registra el pedido del cliente como preventa con entrega directa, dejando constancia del compromiso del cliente mediante firma digital, correo validado o presupuesto aceptado.",
+      "controles": "Validar que la preventa tenga compromiso del cliente, condiciones comerciales y fecha estimada de entrega.",
+      "clave": "Preventa con entrega directa registrada.",
+      "documentos": [
+        "Pedido del cliente",
+        "Presupuesto aceptado",
+        "Correo validado",
+        "Firma digital si corresponde"
+      ],
+      "riesgos": [
+        "Registrar preventa sin compromiso formal",
+        "No informar fecha estimada de entrega",
+        "Falta de respaldo comercial"
+      ],
+      "sistemas": [
+        "Odoo",
+        "Correo electrónico"
+      ],
+      "salidas": [
+        "Pedido de preventa registrado"
+      ]
+    },
+    {
+      "titulo": "Emitir orden de compra al proveedor",
+      "responsable": "Compras",
+      "texto": "Compras emite la orden de compra al proveedor, indicando la dirección del cliente como punto de entrega y detallando la referencia al cliente final para mantener trazabilidad.",
+      "controles": "Verificar dirección de entrega, cliente final, producto solicitado y fecha estimada de entrega.",
+      "clave": "Orden de compra con entrega directa.",
+      "documentos": [
+        "Orden de compra al proveedor",
+        "Datos del cliente final"
+      ],
+      "riesgos": [
+        "Enviar mercadería a dirección incorrecta",
+        "No identificar al cliente final",
+        "Falta de trazabilidad entre preventa y compra"
+      ],
+      "sistemas": [
+        "Odoo",
+        "Compras"
+      ],
+      "salidas": [
+        "Pedido confirmado al proveedor"
+      ]
+    },
+    {
+      "titulo": "Coordinar entrega con proveedor",
+      "responsable": "Compras / Logística",
+      "texto": "Se coordina con el proveedor la fecha estimada de entrega directa al cliente y las condiciones logísticas de despacho.",
+      "controles": "Confirmar plazo, responsable logístico y documentación de entrega requerida.",
+      "clave": "Fecha de entrega coordinada.",
+      "documentos": [
+        "Confirmación del proveedor",
+        "Cronograma de entrega"
+      ],
+      "riesgos": [
+        "Demoras no informadas",
+        "Entrega sin coordinación",
+        "Responsabilidad logística no definida"
+      ],
+      "sistemas": [
+        "Correo electrónico",
+        "Odoo"
+      ],
+      "salidas": [
+        "Entrega directa coordinada"
+      ]
+    },
+    {
+      "titulo": "Definir criterio de facturación",
+      "responsable": "Área Contable / Comercial",
+      "texto": "Se define si corresponde facturar al momento del anticipo o una vez entregado el producto, según el marco legal y tributario vigente.",
+      "controles": "Confirmar con Contabilidad si aplica factura anticipada con entrega pendiente o si debe esperarse la entrega efectiva.",
+      "clave": "Criterio de facturación validado.",
+      "documentos": [
+        "Consulta contable",
+        "Condiciones comerciales",
+        "Pedido de venta"
+      ],
+      "riesgos": [
+        "Facturar en momento incorrecto",
+        "Incumplimiento tributario",
+        "No dejar constancia de entrega diferida"
+      ],
+      "sistemas": [
+        "Odoo",
+        "Facturación"
+      ],
+      "salidas": [
+        "Modalidad de facturación definida"
+      ]
+    },
+    {
+      "titulo": "Facturar anticipo",
+      "responsable": "Facturación / Comercial",
+      "texto": "Si el cliente paga al confirmar la preventa, se genera en Odoo una factura de anticipo por porcentaje o monto fijo desde el pedido de venta.",
+      "controles": "Indicar condición de entrega diferida y dejar claro que el bien aún no fue entregado.",
+      "clave": "Factura de anticipo emitida.",
+      "documentos": [
+        "Factura de anticipo",
+        "Pedido de venta"
+      ],
+      "riesgos": [
+        "No aclarar entrega pendiente",
+        "Facturar anticipo sin respaldo",
+        "No relacionar la factura al pedido"
+      ],
+      "sistemas": [
+        "Odoo",
+        "Facturación"
+      ],
+      "salidas": [
+        "Anticipo facturado y vinculado al pedido"
+      ]
+    },
+    {
+      "titulo": "Facturar al momento de entrega",
+      "responsable": "Facturación",
+      "texto": "Si se define facturar luego de la entrega, se emite la factura al cliente una vez confirmada la recepción del producto por parte del proveedor o cliente.",
+      "controles": "Validar comprobante de entrega antes de emitir la factura final.",
+      "clave": "Entrega confirmada antes de facturar.",
+      "documentos": [
+        "Factura de venta al cliente",
+        "Remito o comprobante de entrega"
+      ],
+      "riesgos": [
+        "Facturar sin entrega confirmada",
+        "Desalineación entre factura y entrega",
+        "Falta de respaldo documental"
+      ],
+      "sistemas": [
+        "Odoo",
+        "Facturación"
+      ],
+      "salidas": [
+        "Factura final emitida"
+      ]
+    },
+    {
+      "titulo": "Recibir factura del proveedor",
+      "responsable": "Compras / Administración",
+      "texto": "El proveedor emite la factura a LH, no al cliente final, aunque la mercadería sea entregada directamente al cliente.",
+      "controles": "Validar que la factura del proveedor esté emitida a LH y coincida con la orden de compra.",
+      "clave": "Factura del proveedor a LH.",
+      "documentos": [
+        "Factura del proveedor",
+        "Orden de compra"
+      ],
+      "riesgos": [
+        "Proveedor factura al cliente final",
+        "Factura no coincide con OC",
+        "Falta de respaldo de compra"
+      ],
+      "sistemas": [
+        "Odoo",
+        "Compras"
+      ],
+      "salidas": [
+        "Factura de proveedor registrada"
+      ]
+    },
+    {
+      "titulo": "Gestionar entrega directa",
+      "responsable": "Proveedor / Compras / Logística",
+      "texto": "El proveedor despacha directamente al cliente y debe entregar remito o comprobante de entrega para respaldar la operación.",
+      "controles": "Solicitar remito o comprobante y verificar que indique entrega al cliente final.",
+      "clave": "Entrega directa respaldada.",
+      "documentos": [
+        "Remito del proveedor",
+        "Comprobante de entrega",
+        "Acta de entrega opcional"
+      ],
+      "riesgos": [
+        "Entrega sin comprobante",
+        "No poder acreditar recepción",
+        "Reclamos por entrega no conforme"
+      ],
+      "sistemas": [
+        "Logística",
+        "Correo electrónico"
+      ],
+      "salidas": [
+        "Producto entregado al cliente"
+      ]
+    },
+    {
+      "titulo": "Confirmar recepción con cliente",
+      "responsable": "Comercial / Posventa",
+      "texto": "Se confirma con el cliente la recepción conforme del producto entregado directamente por el proveedor.",
+      "controles": "Registrar conformidad, fecha de recepción y cualquier observación del cliente.",
+      "clave": "Recepción conforme.",
+      "documentos": [
+        "Confirmación del cliente",
+        "Acta de entrega opcional"
+      ],
+      "riesgos": [
+        "No detectar reclamos tempranos",
+        "Falta de cierre documental",
+        "Diferencias entre proveedor y cliente"
+      ],
+      "sistemas": [
+        "Correo electrónico",
+        "Odoo",
+        "Posventa"
+      ],
+      "salidas": [
+        "Entrega confirmada"
+      ]
+    },
+    {
+      "titulo": "Emitir factura final descontando anticipo",
+      "responsable": "Facturación",
+      "texto": "Cuando el pedido está listo para facturar completamente, se vuelve al pedido de venta en Odoo y se crea la factura final, descontando automáticamente el anticipo ya facturado.",
+      "controles": "Verificar que anticipo y factura final estén vinculados al mismo pedido.",
+      "clave": "Factura final con anticipo aplicado.",
+      "documentos": [
+        "Factura de anticipo",
+        "Factura final",
+        "Pedido de venta"
+      ],
+      "riesgos": [
+        "No descontar anticipo",
+        "Duplicar facturación",
+        "No vincular facturas al pedido"
+      ],
+      "sistemas": [
+        "Odoo",
+        "Facturación"
+      ],
+      "salidas": [
+        "Factura final emitida por saldo pendiente"
+      ]
+    },
+    {
+      "titulo": "Cerrar operación",
+      "responsable": "Comercial / Posventa",
+      "texto": "Una vez confirmada la entrega y emitida la facturación correspondiente, se registra el cierre de la operación y se gestionan reclamos si existieran.",
+      "controles": "Verificar pedido, factura, comprobante de entrega y conformidad del cliente.",
+      "clave": "Operación cerrada con trazabilidad completa.",
+      "documentos": [
+        "Pedido del cliente",
+        "Orden de compra",
+        "Factura del proveedor",
+        "Factura de venta",
+        "Remito de entrega",
+        "Confirmación del cliente"
+      ],
+      "riesgos": [
+        "Cerrar operación incompleta",
+        "No gestionar reclamos",
+        "Falta de trazabilidad comercial y legal"
+      ],
+      "sistemas": [
+        "Odoo",
+        "Posventa"
+      ],
+      "salidas": [
+        "Operación finalizada"
+      ]
+    }
+  ],
+  "excepciones": [
+    {
+      "caso": "Cliente paga anticipo al confirmar la preventa",
+      "accion": "Emitir factura de anticipo por porcentaje o monto fijo en Odoo, dejando constancia de entrega diferida.",
+      "responsable": "Facturación / Comercial"
+    },
+    {
+      "caso": "Se decide facturar solo luego de la entrega",
+      "accion": "Esperar confirmación de entrega del proveedor o cliente antes de emitir la factura al cliente.",
+      "responsable": "Facturación"
+    },
+    {
+      "caso": "No está claro el criterio legal de facturación",
+      "accion": "Confirmar con el área contable si corresponde factura anticipada con entrega pendiente o facturación posterior a entrega efectiva.",
+      "responsable": "Área Contable"
+    },
+    {
+      "caso": "Proveedor entrega directo al cliente",
+      "accion": "Solicitar remito o comprobante de entrega y confirmar recepción conforme con el cliente.",
+      "responsable": "Compras / Logística / Posventa"
+    },
+    {
+      "caso": "Existe anticipo facturado y luego se factura el saldo",
+      "accion": "Crear la factura final desde el mismo pedido de venta en Odoo para que el sistema descuente automáticamente el anticipo.",
+      "responsable": "Facturación"
+    }
+  ]
+}{
                 "titulo": "Generación de oportunidad",
                 "responsable": "Asesor Comercial",
                 "texto": "Se identifica oportunidad comercial.",
