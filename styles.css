@@ -521,4 +521,100 @@ body{
 .folder-item.active{
   background:#2563eb;
   color:white;
+}@media (max-width: 768px){
+
+  .app{
+    display:block;
+  }
+
+  .sidebar{
+    position:relative;
+    width:100%;
+    height:auto;
+    padding:18px;
+  }
+
+  .main{
+    padding:18px;
+  }
+
+  .hero{
+    padding:28px 22px;
+    border-radius:24px;
+  }
+
+  .hero h1{
+    font-size:34px;
+    line-height:1.1;
+  }
+
+  .hero p{
+    font-size:15px;
+  }
+
+  .searchbar{
+    flex-direction:column;
+    gap:12px;
+  }
+
+  .searchbar input,
+  .searchbar button{
+    width:100%;
+  }
+
+  .stats{
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+  }
+
+  .stat{
+    padding:20px;
+  }
+
+  .grid{
+    grid-template-columns:1fr;
+  }
+
+  .process{
+    padding:24px;
+  }
+
+  .process h3{
+    font-size:20px;
+  }
+
+  .actions{
+    flex-direction:column;
+  }
+
+  .actions a,
+  .actions button{
+    width:100%;
+    text-align:center;
+  }
+
+  .modal{
+    padding:0;
+  }
+
+  .modal-box{
+    width:100%;
+    height:100vh;
+    border-radius:0;
+    padding:22px;
+    overflow:auto;
+  }
+
+  .flow{
+    grid-template-columns:1fr;
+  }
+
+  #steps{
+    max-height:none;
+  }
+
+  .detail{
+    min-height:auto;
+  }
+
 }
